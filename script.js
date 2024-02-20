@@ -13,4 +13,6 @@ let inventory = [
   //   "fireBlast",
 ];
 
-let buttonOne = document.querySelector("#buttonOne");
+const buttonOne = document.querySelector("#buttonOne");
+const buttonTwo = document.querySelector("#buttonTwo");
+const buttonThree = document.querySelector("#buttonThree");
