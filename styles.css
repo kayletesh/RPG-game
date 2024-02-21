@@ -7,3 +7,28 @@ body {
   color: #ccf2fc;
   padding: 10px;
 }
+
+#game {
+  max-width: 500px;
+  max-height: 400px;
+  background-color: #ccf2fc;
+  color: #ccf2fc;
+  margin: 30px, auto, 0px, auto;
+  padding: 10px;
+}
+
+#controls,
+#stats {
+  border: 2px solid #0a0a23;
+  /* border-radius: 7px; */
+  color: #0a0a23;
+  padding: 5px;
+}
+
+#monsterStats {
+  display: none;
+  border: 2px solid #0a0a23;
+  color: #ccf2fc;
+  background-color: #9c0606;
+  padding: 5px;
+}
