@@ -12,7 +12,14 @@ let inventory = [
   //   "greatSword",
   //   "fireBlast",
 ];
-
+// buttons
 const buttonOne = document.querySelector("#buttonOne");
 const buttonTwo = document.querySelector("#buttonTwo");
 const buttonThree = document.querySelector("#buttonThree");
+// stats and such
+const text = document.querySelector('#text');
+const xpText = document.querySelector('#xpText');
+const healthText = document.querySelector('#healthText');
+const goldText = document.querySelector('#goldText');
+const monsterStats = document.querySelector('#monsterStats');
+const monsterName = document.querySelector('#monsterName');
