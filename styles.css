@@ -9,7 +9,7 @@ body {
 }
 
 #game {
-  max-width: 500px;
+  max-width: 600px;
   max-height: 400px;
   background-color: #ccf2fc;
   color: #ccf2fc;
@@ -43,4 +43,8 @@ button {
   background-color: #feac32;
   background-image: linear-gradient(#fecc4c, #ffac33);
   border: 3px solid #f6a42a;
+}
+
+.secondary {
+  display: none;
 }
