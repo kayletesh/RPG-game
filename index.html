@@ -1,44 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RPG Dragon Game</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <div id="game">
-      <div id="stats">
-        <span class="stat"
-          >XP: <strong><span id="xpText">0</span></strong></span
-        >
-        <span class="stat"
-          >Health: <strong><span id="healthText">100</span></strong></span
-        >
-        <span class="stat"
-          >Gold: <strong><span id="goldText">50</span></strong></span
-        >
-      </div>
-      <div id="controls">
-        <button id="buttonOne">Go To Store</button>
-        <button id="buttonTwo">Go To Tavern</button>
-        <button id="buttonThree">Set Forth</button>
-      </div>
-      <div id="monsterStats">
-        <span class="stat"
-          >Monster Name: <strong><span id="monsterName"></span></strong
-        ></span>
-        <span class="stat"
-          >Health: <strong><span id="monsterHealth"></span></strong
-        ></span>
-      </div>
-      <div id="text">
-        Welcome to The Brave Knight! You must travel through the land of Vaahl,
-        and defeat the fowl beast that lurks in the shadows of Mount Kuur. Train
-        hard, young knight! Your journey begins in the town square. where do you
-        wish to go? Use the buttons to decide.
-      </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RPG Dragon Game</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div id="game">
+    <div id="stats">
+      <span class="stat">XP: <strong><span id="xpText">0</span></strong></span>
+      <span class="stat">Health: <strong><span id="healthText">100</span></strong></span>
+      <span class="stat">Gold: <strong><span id="goldText">50</span></strong></span>
     </div>
-    <script src="script.js" defer></script>
-  </body>
+    <div id="controls">
+      <button id="buttonStore">Go To Store</button>
+      <button id="buttonTavern">Go To Tavern</button>
+      <button id="buttonVenture">Venture Forth</button>
+    </div>
+    <div id="monsterStats">
+      <span class="stat">Monster Name: <strong><span id="monsterName"></span></strong></span>
+      <span class="stat">Health: <strong><span id="monsterHealth"></span></strong></span>
+    </div>
+    <div id="text">
+      Welcome to The Brave Knight! You must travel through the land of Vaahl,
+      and defeat the fowl beast that lurks in the shadows of Mount Kuur. Train
+      hard, young knight! Your journey begins in the town square. where do you
+      wish to go? Use the buttons to decide.
+    </div>
+  </div>
+  <script src="script.js" defer></script>
+</body>
+
 </html>

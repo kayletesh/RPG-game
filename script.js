@@ -13,9 +13,9 @@ let inventory = [
   //   "fireBlast",
 ];
 // buttons
-const buttonOne = document.querySelector("#buttonOne");
-const buttonTwo = document.querySelector("#buttonTwo");
-const buttonThree = document.querySelector("#buttonThree");
+const buttonStore = document.querySelector("#buttonStore");
+const buttonTavern = document.querySelector("#buttonTavern");
+const buttonVenture = document.querySelector("#buttonVenture");
 // stats and such
 const text = document.querySelector('#text');
 const xpText = document.querySelector('#xpText');
@@ -24,3 +24,29 @@ const goldText = document.querySelector('#goldText');
 const monsterStats = document.querySelector('#monsterStats');
 const monsterName = document.querySelector('#monsterName');
 const monsterHealthText = document.querySelector('#monsterHealth')
+
+// store buttons
+function goStore() {
+  console.log("Going to store.");
+}
+
+// Tavern functions
+function goTavern() {
+  console.log("Going to tavern.");
+}
+// marsh functions
+
+function ventureForth() {
+  console.log("Setting out on an adventure!!")
+}
+
+// //final boss code
+// function fightFinalBoss() {
+//   console.log("Fighting Final Boss.");
+// }
+
+// initialize buttons
+
+buttonStore.addEventListener('click', (goStore))
+buttonTavern.addEventListener('click', (goTavern))
+buttonVenture.addEventListener('click', (ventureForth))
