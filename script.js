@@ -28,64 +28,96 @@ const monsterName = document.querySelector("#monsterName");
 const monsterHealthText = document.querySelector("#monsterHealth");
 
 // examine options
-const start = `You examine the Town`;
-const town = `You examine the Town.`;
-const store = "You examine the store.";
-const tavern = "You examine the Tavern.";
-const cave = "You examine the Cave.";
-const marsh = "You examine the Marsh.";
-const mountain = "You examine the Mountain";
+// const start = `You examine the Town`; /*also town*/
+
+const shore = "You examine the shore.";
+const forest = "You examine the forest";
 let currentLocation = "start";
 
-// let examineOptions = [start, town, store, tavern, cave, marsh, mountain];
+// let locationData = [start, town, store, tavern, cave, marsh, mountain];
 
-const examineOptions = {
+const locationData = {
   start: {
-    message: start,
+    message: "You examine the Town",
+    options: [
+      'Enter "Axes and Alms"',
+      'Enter "The Last Dram"',
+      "Venture Forth",
+      "Examine",
+    ],
+    displayText:
+      "Welcome to the Town of Sonir! You must travel through the land of Vaahl, and defeat the fowl beast that lurks in the shadows of Mount Kuur. Train hard, young knight! Your journey begins in the town square. where do you wish to go? Use the buttons to decide.",
+  },
+  town: {
+    message: "You examine the Town",
+    options: [
+      'Enter "Axes and Alms"',
+      'Enter "The Last Dram"',
+      "Venture Forth",
+      "Examine",
+    ],
+    displayText:
+      "You return to the Town Square. What would you like to do next?",
   },
   store: {
-    message: store,
+    message: "You examine the store.",
+    options: ["Buy items", "Sell items", "Return to Town"],
+    displayText: `You have entered the store. An elderly dwarven male watches you from the counter.
+    "Hello, young traveler.. Anything catch'n yer eye?"`,
+  },
+  // buyItems: {
+  //   message: "examine content",
+  //   options: ["placeholder"],
+  //   displayText: `You take a look at what the dwarf has to sell.`,
+  // },
+
+  tavern: {
+    message: "You examine the Tavern.",
+    options: ["Buy a dram of Whiskey", "Ask for Work", "Return to Town"],
+    displayText:
+      "You enter the small tavern. There are a few other travelers at the tables. A human male with what looks to be a long healed burn scar across the left of his face nods in greeting. What will you do?",
+  },
+  plains: {
+    message: "You examine the plains",
+    options: [
+      "Explore the Plains",
+      "Venture further from Town",
+      "Return to Town",
+    ],
+    displayText:
+      "You step outside of the town gates to find gentle green plains ahead. The perfect start for our young adventurer! What will you do? (Plains Recommended level: 1)",
+  },
+  marsh: {
+    message: "You examine the Marsh.",
   },
 };
 
+const handleNavigation = (location) => {
+  currentLocation = location;
+  text.innerText = locationData[currentLocation].displayText;
+  handleBtnContent(...locationData[currentLocation].options);
+};
 // town functions
+
 const goTown = (e) => {
-  // buttonFour.removeEventListener("click", examine);
-  // text.innerText = `You stand in the town Square. What would you like to do?`;
-  // buttonOne.addEventListener("click", goStore);
-  // buttonOne.innerText = `Enter "Axes and Alms"`;
-  // buttonTwo.addEventListener("click", goTavern);
-  // buttonTwo.innerText = `Enter "The Last Dram" Tavern`;
-  // buttonThree.addEventListener("click", ventureForth);
-  // buttonThree.innerText = "Venture Forth";
-  // buttonFour.addEventListener("click", function () {
-  //   examine(town);
-  // });
+  handleNavigation("town");
 };
 
 // store buttons
 const goStore = (e) => {
-  currentLocation = "store";
-  text.innerText = `You have entered the store. An elderly dwarven male watches you from the counter.
-        "Hello, young traveler.. Anything catch'n yer eye?"`;
-  // buttonOne.addEventListener("click", buyItems);
-  // buttonTwo.addEventListener("click", sellItems);
-  // buttonThree.addEventListener("click", goTown);
-  // buttonFour.addEventListener("click", examine);
-
-  btnOne.innerText = "Buy items";
-  btnTwo.innerText = "Sell items";
-  btnThree.innerText = "Return to Town";
+  handleNavigation("store");
 };
 
 // Tavern functions
 const goTavern = (e) => {
-  text.innerText =
-    "You enter the small tavern. There are a few other travelers at the tables. A human male with what looks to be a burn scar across the left of his face nods in greeting. What will you do?";
+  handleNavigation("tavern");
 };
-// marsh functions/cave/mountain
 
-const ventureForth = (e) => {};
+// venture function
+
+const ventureForth = (e) => {
+  handleNavigation("plains");
+};
 
 // secondary store functions
 const buyItems = (e) => {
@@ -108,11 +140,19 @@ btnTwo.addEventListener("click", (e) => handleBtnTwo(e));
 btnThree.addEventListener("click", (e) => handleBtnThree(e));
 btnFour.addEventListener("click", (e) => handleBtnFour(e));
 
+const handleBtnContent = (one, two, three) => {
+  btnOne.innerText = one;
+  btnTwo.innerText = two;
+  btnThree.innerText = three;
+};
+
+addEventListener("load", handleBtnContent(...locationData.start.options));
+
 const handleBtnOne = (e) => {
   const content = e.target.innerText.toLowerCase();
 
   switch (content) {
-    case "enter axes and alms":
+    case 'enter "axes and alms"':
       goStore(e);
       break;
     case "buy items":
@@ -120,19 +160,37 @@ const handleBtnOne = (e) => {
       break;
 
     default:
+      console.error(`No match found for: ${content}`);
       break;
   }
 };
 
-const handleBtnTwo = (e) => {};
+const handleBtnTwo = (e) => {
+  const content = e.target.innerText.toLowerCase();
 
-const handleBtnThree = (e) => {};
+  switch (content) {
+    case 'enter "the last dram"':
+      goTavern(e);
+      break;
+  }
+};
+
+const handleBtnThree = (e) => {
+  const content = e.target.innerText.toLowerCase();
+
+  switch (content) {
+    case "venture forth":
+      ventureForth(e);
+      break;
+
+    case "return to town":
+      goTown(e);
+      break;
+  }
+};
 
 //examineAll code
 const handleBtnFour = (e) => {
-  console.log(examineOptions[currentLocation].message);
-  text.innerText = examineOptions[currentLocation].message;
+  console.log(locationData[currentLocation].message);
+  text.innerText = locationData[currentLocation].message;
 };
-
-// arrow or not arrow, pick 1
-// btn or button, pick 1
