@@ -71,11 +71,24 @@ const setForth = (e) => {
   handleNavigation(locationData[4]);
 };
 
+// examine function
+// pass a string parameter into examine for each button
+// set display text to the string parameter
+const examine = (examineText) => {
+  console.log(examineText);
+  text.innerHTML = examineText;
+};
 // examine code ONLY
 
-const examine = (location) => {
+const examineOptions = (location) => {
   console.log("Examining...");
-  text.innerHTML = location.examineText;
+  handleNavigation(location.examineOptions);
+  // text.innerHTML = location.examineText;
+};
+
+const goBack = (location) => {
+  console.log(location);
+  handleNavigation(location);
 };
 
 // set1 [buyItems, sellItems, giveDram, questBoard, goPlains, goPath2]
@@ -113,7 +126,7 @@ const handleBtnContent = (one, two, three) => {
 
 const locationData = [
   {
-    name: "start",
+    /*onLoad*/ name: "start",
     btnContents: [
       'Enter "Axes and Alms"',
       'Enter "The Last Dram"',
@@ -125,19 +138,40 @@ const locationData = [
       goTavern,
       setForth,
       function () {
-        examine(locationData[0]);
+        examineOptions(locationData[0]);
       },
     ],
     displayText:
       "<span><strong>Welcome</strong> young adventurer, to the village of Sonir! Strange creatures have appeared beyond the village gates. The king calls for aid! <br><strong>The Bone King</strong> has risen once more! You must train hard, and venture far from home to help save the kingdom from this terrible threat.<br><br> What do you wish to do?</span>",
-    examineText:
-      '<span>Upon examining the village you notice three things.<br> To your left, the village\'s only trading post; <strong>"Axes and Alms"</strong>.<br> To your right, a small tavern; <strong>"The Last Dram"</strong>, A sign near the door reads: <br> "Looking for work? Willing to brave the world outside the walls? Inquire inside." <br>Ahead of you are the village gates; the only way in or out of Sonir.</span>',
+    examineOptions: {
+      btnContents: [
+        'Examine "Axes and Alms"',
+        'Examine "The Last Dram"',
+        "Examine Village Gates",
+        "Return",
+      ],
+      btnFunctions: [
+        function () {
+          examine("Examining the storeFront");
+        },
+        function () {
+          examine("Examining the Bar");
+        },
+        function () {
+          examine("examining village gates");
+        },
+        function () {
+          goBack(locationData[1]);
+        },
+      ],
+      displayText: "<span>What would you like to examine?</span>",
+    },
+    // examineText:
+    //   '<span>Upon examining the village you notice three things.<br> To your left, the village\'s only trading post; <strong>"Axes and Alms"</strong>.<br> To your right, a small tavern; <strong>"The Last Dram"</strong>, A sign near the door reads: <br> "Looking for work? Willing to brave the world outside the walls? Inquire inside." <br>Ahead of you are the village gates; the only way in or out of Sonir.</span>',
   },
-
+  // base set[town1, store1, bar1, path1]
   {
-    // base set[town1, store1, bar1, path1]
-    // town one
-    name: "Sonir",
+    /*Sonir */ name: "Sonir",
     btnContents: [
       'Enter "Axes and Alms"',
       'Enter "The Last Dram"',
@@ -149,40 +183,79 @@ const locationData = [
       goTavern,
       setForth,
       function () {
-        examine(locationData[1]);
+        examineOptions(locationData[1]);
       },
     ],
     displayText:
       "<span>You have returned to the village square.<br><br> What will you do next?</span>",
-    examineText:
-      '<span>Upon examining the village you notice three things.<br> To your left, the village\'s only trading post; <strong>"Axes and Alms"</strong>.<br> To your right, a small tavern; <strong>"The Last Dram"</strong>, A sign near the door reads: <br> "Looking for work? Willing to brave the world outside the walls? Inquire inside." <br>Ahead of you are the village gates; the only way in or out of Sonir.</span>',
+    examineOptions: {
+      btnContents: [
+        'Examine "Axes and Alms"',
+        'Examine "The Last Dram"',
+        "Examine Village Gates",
+        "Return",
+      ],
+      btnFunctions: [
+        function () {
+          examine("Examining the storeFront");
+        },
+        function () {
+          examine("Examining the Bar");
+        },
+        function () {
+          examine("examining village gates");
+        },
+        function () {
+          goBack(locationData[1]);
+        },
+      ],
+      displayText: "<span>What would you like to examine?</span>",
+    },
   },
-
   {
-    // store one
-    name: "Axes and Alms",
+    /*axes and alms*/ name: "Axes and Alms",
     btnContents: [
       "Buy Items",
       "Sell Items",
       "Return to Village",
-      "Examine the Dwarf",
+      "Examine the Store",
     ],
     btnFunctions: [
       buyItems,
       sellItems,
       goTown,
       function () {
-        examine(locationData[2]);
+        examineOptions(locationData[2]);
       },
     ],
     displayText:
       '<span>You duck into the shop to find the storefront is not much larger than a halfling\'s hole. There are two small doors leading off to different rooms on either side; both with large signs stating <strong>"NO ENTRY"</strong> <br>An elderly dwarven male watches you from the counter. He speaks in a low, gruff voice: <br>"Hello, young one... Anything catch\'n yer eye?"<br><br> What will you do next?</span>',
-    examineText:
-      "<span>You examine the dwarf more closely. The first thing you notice is he is old. <em> Really</em> old. <br> There is a long, jagged scar running from the old drawf's hairline, down to his chin, cutting across his left eye.<br> The eye in question, has been replaced by a stunning golden device that seems to track your movements as if it were truly watching you.<br> The drawf wears a simple tunic, revealing many similarly grisly scars along his arms. It is clear he has seen many battles in his day. </span>",
+    examineOptions: {
+      btnContents: [
+        "Examine the Room",
+        "examine the dwarf",
+        "speak to the dwarf",
+        "return",
+      ],
+      btnFunctions: [
+        function () {
+          examine("examining the room");
+        },
+        function () {
+          examine("examining the dwarf");
+        },
+        function () {
+          examine("speaking to the dwarf");
+        },
+        function () {
+          goBack(locationData[1]);
+        },
+      ],
+      displayText: "<span>What would you like to examine?</span>",
+    },
   },
   {
-    // bar one
-    name: "The Last Dram",
+    /*The Last Dram*/ name: "The Last Dram",
     btnContents: [
       "Buy a Dram of Ale",
       "Check the Quest Board",
@@ -195,16 +268,37 @@ const locationData = [
       goQuestBoard,
       goTown,
       function () {
-        examine(locationData[3]);
+        examineOptions(locationData[3]);
       },
     ],
     displayText:
       "<span>You enter the small tavern. There are a few other travelers at the tables. A human male with what looks to be a long healed burn scar across the right side of his face nods in a silent greeting.<br><br> What will you do?</span>",
-    examineText:
-      '<span>Upon examination, you see a menu board nearby offering a <strong><em>"World Famous Dram of EmberBerry Ale!!!"</em></strong><br>Attached to a nearby beam, a small questboard waits. Several parchments have been nailed to the board. <br> The barkeep watches you curiously as you examine him further. The male, like the drawf, is rather old.<br> His greying hair falls past his shoulders, and one of his once green eyes has turned a milky white.',
+    examineOptions: {
+      btnContents: [
+        "Examine your surroundings",
+        "Examine the barkeep",
+        "Speak to the Barkeep",
+        "return",
+      ],
+      btnFunctions: [
+        function () {
+          examine("examining surroundings");
+        },
+        function () {
+          examine("examining the barkeep");
+        },
+        function () {
+          examine("speaking to barkeep");
+        },
+        function () {
+          goBack(locationData[3]);
+        },
+      ],
+      displayText: "<span>What would you like to examine?</span>",
+    },
   },
   {
-    name: "pathOne",
+    /*pathOne */ name: "pathOne",
     btnContents: [
       "Explore the Plains",
       "Venture Further From Sonir",
@@ -216,14 +310,36 @@ const locationData = [
       goPathTwo,
       goTown,
       function () {
-        examine(locationData[4]);
+        examineOptions(locationData[4]);
       },
     ],
     displayText:
       "<span>(<strong>Plains Recommended level: 1 )</strong><br>You venture past the village gates to find gentle field of green ahead; the perfect start for our young adventurer! <br>A well kept path cuts through the plains, leading to a crossroads up ahead. So long as you keep to the path, you will be safe, but fortune favors the bold...<br><br> What will you do next?</span>",
-    examineText:
-      "Upon examining the plains you notice movement within the tall grass. strange sounds come from nearby. In the distance, you can see the grove of EmberBerry bushes.",
+    examineOptions: {
+      btnContents: [
+        "Examine the Plains",
+        "Examine the Path Ahead",
+        "Examine emberBerry patch",
+        "return",
+      ],
+      btnFunctions: [
+        function () {
+          examine("examining the plains");
+        },
+        function () {
+          examine("examining the path ahead");
+        },
+        function () {
+          examine("examining the berry Patch");
+        },
+        function () {
+          goBack(locationData[4]);
+        },
+      ],
+      displayText: "<span>What would you like to examine?</span>",
+    },
   },
+  /*all examine function options*/
 
   // setOne [storeOptions, barOptions, ]
 ];
