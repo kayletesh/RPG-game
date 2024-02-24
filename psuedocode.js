@@ -1,3 +1,14 @@
+// VENTURE_FORTH_AND_EXAMINE TASKS!!!
+/*This begins phase two.
+Set up buttons for venturing further from the plains ONE LEVEL ONLY
+set up examines for all "Phase one."
+
+Phase three will focus on chatBox and Header. 
+
+
+
+
+
 // places to include:
 
 
@@ -7,6 +18,22 @@ from start:
 store
 tavern
 path
+
+pathOne - 
+plains
+town, 
+pathTwo
+
+plains
+explore=> activates a random fight
+return=> returns to previous location
+examine =>examines plains
+
+PathTwo
+grasslands
+beach
+forest
+
 
 from Plains:(what goes here? [explore the plains], [return to the village], [Journey beyond the Plains] [examine])
 grasslands
@@ -32,5 +59,4 @@ After level 20
 The Mountains:
 The Cliffs
 The Cavern
-The Castle
-
+The Castle*/
