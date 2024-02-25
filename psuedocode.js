@@ -6,7 +6,9 @@ set up examines for all "Phase one."
 Phase three will focus on chatBox and Header. 
 
 
+things to program in 
 
+random town texts, speach, 
 
 
 // places to include:
