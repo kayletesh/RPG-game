@@ -30,6 +30,14 @@ body {
   padding: 5px;
 }
 
+h1 {
+  color: #0a0a23;
+  text-align: center;
+  text-decoration: underline;
+
+  letter-spacing: 0px;
+}
+
 #monsterStats {
   display: none;
   border: 2px solid #0a0a23;
@@ -55,5 +63,17 @@ button {
 }
 
 .secondary {
+  /* display: none; */
+  cursor: pointer;
+  color: #0a0a23;
+  background-color: #feac32;
+  background-image: linear-gradient(#fecc4c, #ffac33);
+  border: 3px solid #f6a42a;
+  font-family: "EB Garamond", "DotGothic16";
+  font-size: 16px;
+  font-weight: 700;
+}
+
+#secondaryControls {
   display: none;
 }

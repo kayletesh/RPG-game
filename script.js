@@ -17,8 +17,15 @@ const btnOne = document.querySelector("#buttonOne");
 const btnTwo = document.querySelector("#buttonTwo");
 const btnThree = document.querySelector("#buttonThree");
 const btnFour = document.querySelector("#buttonFour");
+// Secondary buttons
+const secondaryBtnOne = document.querySelector("#secondaryOne");
+const secondaryBtnTwo = document.querySelector("#secondaryTwo");
+const secondaryBtnThree = document.querySelector("#secondaryThree");
+const secondaryBtnFour = document.querySelector("#secondaryFour");
+const secondaryControls = document.querySelector("#secondaryControls");
 
 // stats and such
+const header = document.querySelector("h1");
 const text = document.querySelector("#text");
 const xpText = document.querySelector("#xpText");
 const healthText = document.querySelector("#healthText");
@@ -37,8 +44,10 @@ const monsterHealthText = document.querySelector("#monsterHealth");
 //     message: "You examine the Marsh.",
 //   },
 // };
-
+// main buttons
 function handleNavigation(locationData) {
+  secondaryControls.style.display = "none";
+  header.innerText = locationData.name;
   btnOne.innerText = locationData.btnContents[0];
   btnTwo.innerText = locationData.btnContents[1];
   btnThree.innerText = locationData.btnContents[2];
@@ -48,6 +57,18 @@ function handleNavigation(locationData) {
   btnThree.onclick = locationData.btnFunctions[2];
   btnFour.onclick = locationData.btnFunctions[3];
   text.innerHTML = locationData.displayText;
+}
+// secondary buttons
+function handleSecondaryControls(locationData) {
+  secondaryControls.style.display = "block";
+  secondaryBtnOne.innerText = locationData.btnContents[0];
+  secondaryBtnTwo.innerText = locationData.btnContents[1];
+  secondaryBtnThree.innerText = locationData.btnContents[2];
+  secondaryBtnFour.innerText = locationData.btnContents[3];
+  secondaryBtnOne.onclick = locationData.btnFunctions[0];
+  secondaryBtnTwo.onclick = locationData.btnFunctions[1];
+  secondaryBtnThree.onclick = locationData.btnFunctions[2];
+  secondaryBtnFour.onclick = locationData.btnFunctions[3];
 }
 
 // baseSet [Town1, store1, bar1, path1]
@@ -82,12 +103,11 @@ const examine = (examineText) => {
 
 const examineOptions = (location) => {
   console.log("Examining...");
-  handleNavigation(location.examineOptions);
+  handleSecondaryControls(location.examineOptions);
   // text.innerHTML = location.examineText;
 };
 
 const goBack = (location) => {
-  console.log(location);
   handleNavigation(location);
 };
 
@@ -126,7 +146,7 @@ const handleBtnContent = (one, two, three) => {
 
 const locationData = [
   {
-    /*onLoad*/ name: "start",
+    /*onLoad*/ name: "THE VILLAGE OF SONIR",
     btnContents: [
       'Enter "Axes and Amenities"',
       'Enter "The Last Dram"',
@@ -144,6 +164,7 @@ const locationData = [
     displayText:
       "<span><strong>Welcome</strong> young adventurer, to the village of Sonir. Strange creatures have appeared beyond the village gates. <strong>The King of Covehn has called for aid!</strong> All those young, and capable of travel, are to make for the kingdom at once! <br><br><strong>The Bone King</strong> has risen once more! <br> You must train hard, and venture far from home to help save the kingdom from this terrible threat.<br><br> What do you wish to do?</span>",
     examineOptions: {
+      name: "THE VILLAGE OF SONIR",
       btnContents: [
         "Examine the Shop",
         "Examine the Tavern",
@@ -351,7 +372,7 @@ const locationData = [
       btnFunctions: [
         function () {
           examine(
-            "<span>You examine the Plains. The sea of green is broken periodically by copses of trees. <br><br>To the east you can see an old farmhouse.<br> To the west, the berry patch is just visible in the distance.<br><br>Behind you lies the village, and in the distance, you can just make out the scarecrow that marks the crossroads to the south.<br><br> What do you wish to do?</span>"
+            "<span>You examine the Plains. The sea of green is broken periodically by copses of trees. <br><br>To the east you can see an 🏡old farmhouse.<br> To the west, the 🍓berry patch is just visible in the distance.<br><br>Behind you lies the village, and in the distance, you can just make out the scarecrow that marks the crossroads to the south.<br><br> What do you wish to do?</span>"
           );
         },
         function () {
