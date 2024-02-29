@@ -35,7 +35,8 @@ const goldText = document.querySelector("#goldText");
 const monsterStats = document.querySelector("#monsterStats");
 const monsterName = document.querySelector("#monsterName");
 const monsterHealthText = document.querySelector("#monsterHealth");
-const backpackContainer = document.querySelector("#backpackContainer");
+const backpackContainer = document.querySelector("#backpack-container");
+const shopContainer = document.querySelector("#shop-container");
 
 //   // buyItems: {
 //   //   message: "examine content",
@@ -48,6 +49,17 @@ const backpackContainer = document.querySelector("#backpackContainer");
 //   },
 // };
 // main buttons
+
+function handleShop() {
+  if (shopContainer.className === "hidden") {
+    shopContainer.classList.remove("hidden");
+  } else {
+    shopContainer.classList.add("hidden");
+  }
+  console.log("opening shop window");
+  handleBackpack();
+  console.log("Buying Items");
+}
 
 function handleBackpack() {
   if (backpackContainer.className === "hidden") {
@@ -127,9 +139,10 @@ const goBack = (location) => {
 // set1 [buyItems, sellItems, giveDram, questBoard, goPlains, goPath2]
 
 const buyItems = (e) => {
-  console.log("Buying Items");
+  handleShop();
 };
 const sellItems = (e) => {
+  handleShop();
   console.log("Selling Items");
 };
 

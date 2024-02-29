@@ -1,6 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=DotGothic16&family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap");
 /* * {border: 2px solid red; */
 /* } */
+
+:root {
+  --gold: hsl(28 60% 65%);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -8,7 +13,7 @@
 }
 body {
   display: flex;
-
+  justify-content: center;
   background-color: #0a0a23;
   font-family: "EB Garamond", "DotGothic16";
   /* letter-spacing: 1px; */
@@ -22,11 +27,13 @@ body {
 }
 
 #game {
+  border-radius: 20px;
+  margin-top: 30px;
   display: flex;
   flex-direction: column;
   max-width: 700px;
-  max-height: 600px;
-  background-color: #ccf2fc;
+  height: 600px;
+  background-color: #1a5c4d;
   color: #ccf2fc;
   margin: 30px, auto, 0px, auto;
   padding: 10px;
@@ -64,8 +71,11 @@ button {
   cursor: pointer;
   color: #0a0a23;
   background-color: #feac32;
-  background-image: linear-gradient(#fecc4c, #ffac33);
-  border: 3px solid #f6a42a;
+  border-radius: 7px;
+  background-image: linear-gradient(#71b1c4, #208030);
+  border: 1px solid #70e28d;
+  padding: 3px;
+  margin: 0 1px;
   font-family: "EB Garamond", "DotGothic16";
   font-size: 16px;
   font-weight: 700;
@@ -95,11 +105,14 @@ button {
   padding-right: 10px;
 }
 
-#backpackContainer {
-  margin-left: 1px;
+#backpack-container,
+#shop-container {
+  margin: 30px 3px 0px 3px;
   flex-direction: column;
-  border: 1px solid #6d4c19;
-  background: #265042;
+  /* border: 2px solid #422a05; */
+  border: 2px solid var(--gold);
+  /* background: #475026; */
+  background: #f6ff784d;
   width: 250px;
   border-radius: 20px;
   /* max-height: 600px; */
@@ -110,11 +123,15 @@ h2 {
   text-align: center;
   text-decoration: underline;
   font-weight: 900;
+  color: var(--gold);
 }
 
-#backpack {
+#backpack,
+#item-container {
   margin: 0 2px 0 2px;
-  border: 1px solid #6d4c19;
+  /* border: 1px solid #422a05; */
+  border: 1px solid var(--gold);
+  border-radius: 7px;
   max-width: 250px;
   min-height: 30px;
   max-height: 600px;
