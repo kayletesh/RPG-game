@@ -11,21 +11,26 @@
     <div id="game">
       <h1></h1>
       <div id="stats">
-        <span class="stat"
-          >XP: <strong><span id="xpText">0</span></strong></span
-        >
-        <span class="stat"
-          >Health: <strong><span id="healthText">100</span></strong></span
-        >
-        <span class="stat"
-          >Gold: <strong><span id="goldText">50</span></strong></span
-        >
+        <div id="statcontainer">
+          <span class="stat"
+            >XP: <strong><span id="xpText">0</span></strong></span
+          >
+          <span class="stat"
+            >Health: <strong><span id="healthText">100</span></strong></span
+          >
+          <span class="stat"
+            >Gold: <strong><span id="goldText">50</span></strong></span
+          >
+        </div>
+        <div id="btnBackpack">
+          <button id="inventory">Backpack</button>
+        </div>
       </div>
       <div id="controls">
         <button id="buttonOne"></button>
         <button id="buttonTwo"></button>
         <button id="buttonThree"></button>
-        <button id="buttonFour">Examine</button>
+        <button id="buttonFour"></button>
         <div id="secondaryControls">
           <button id="secondaryOne" class="secondary"></button>
           <button id="secondaryTwo" class="secondary"></button>
@@ -41,13 +46,14 @@
           >Health: <strong><span id="monsterHealth"></span></strong
         ></span>
       </div>
-      <div id="text">
-        Welcome to the Town of Sonir! You must travel through the land of Vaahl,
-        and defeat the fowl beast that lurks in the shadows of Mount Kuur. Train
-        hard, young knight! Your journey begins in the town square. where do you
-        wish to go? Use the buttons to decide.
-      </div>
+      <div id="text"></div>
     </div>
+    <div id="backpackContainer" class="hidden">
+      <h2>INVENTORY</h2>
+
+      <div id="backpack"></div>
+    </div>
+
     <script src="script.js" defer></script>
   </body>
 </html>

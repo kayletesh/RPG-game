@@ -23,6 +23,8 @@ const secondaryBtnTwo = document.querySelector("#secondaryTwo");
 const secondaryBtnThree = document.querySelector("#secondaryThree");
 const secondaryBtnFour = document.querySelector("#secondaryFour");
 const secondaryControls = document.querySelector("#secondaryControls");
+const btnBackpack = document.querySelector("#inventory");
+const divBackpack = document.querySelector("#btnBackpack");
 
 // stats and such
 const header = document.querySelector("h1");
@@ -33,6 +35,7 @@ const goldText = document.querySelector("#goldText");
 const monsterStats = document.querySelector("#monsterStats");
 const monsterName = document.querySelector("#monsterName");
 const monsterHealthText = document.querySelector("#monsterHealth");
+const backpackContainer = document.querySelector("#backpackContainer");
 
 //   // buyItems: {
 //   //   message: "examine content",
@@ -45,6 +48,16 @@ const monsterHealthText = document.querySelector("#monsterHealth");
 //   },
 // };
 // main buttons
+
+function handleBackpack() {
+  if (backpackContainer.className === "hidden") {
+    backpackContainer.classList.remove("hidden");
+  } else {
+    backpackContainer.classList.add("hidden");
+  }
+  console.log("opening backpack");
+}
+
 function handleNavigation(locationData) {
   secondaryControls.style.display = "none";
   header.innerText = locationData.name;
@@ -398,4 +411,7 @@ const locationData = [
   // setOne [storeOptions, barOptions, ]
 ];
 
-addEventListener("load", handleNavigation(locationData[0]));
+addEventListener("load", () => {
+  handleNavigation(locationData[0]);
+  btnBackpack.onclick = handleBackpack;
+});

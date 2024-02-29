@@ -62,3 +62,12 @@ The Mountains:
 The Cliffs
 The Cavern
 The Castle*/
+
+
+// backpack pseudocode
+
+/*Div needs to be hidden on load
+div needs to appear on click. 
+div needs to be hidden on second click
+need an if statement to determine this. 
+check if the display is open, or hidden, and set to opposite. 

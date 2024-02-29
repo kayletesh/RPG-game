@@ -1,6 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=DotGothic16&family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap");
-
+/* * {border: 2px solid red; */
+/* } */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 body {
+  display: flex;
+
   background-color: #0a0a23;
   font-family: "EB Garamond", "DotGothic16";
   /* letter-spacing: 1px; */
@@ -14,6 +22,8 @@ body {
 }
 
 #game {
+  display: flex;
+  flex-direction: column;
   max-width: 700px;
   max-height: 600px;
   background-color: #ccf2fc;
@@ -46,7 +56,7 @@ h1 {
   padding: 5px;
 }
 
-.stat {
+.stats {
   padding-right: 10px;
 }
 
@@ -75,5 +85,41 @@ button {
 }
 
 #secondaryControls {
+  display: none;
+}
+
+#stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 10px;
+}
+
+#backpackContainer {
+  margin-left: 1px;
+  flex-direction: column;
+  border: 1px solid #6d4c19;
+  background: #265042;
+  width: 250px;
+  border-radius: 20px;
+  /* max-height: 600px; */
+}
+
+h2 {
+  /* border: 2px solid black; */
+  text-align: center;
+  text-decoration: underline;
+  font-weight: 900;
+}
+
+#backpack {
+  margin: 0 2px 0 2px;
+  border: 1px solid #6d4c19;
+  max-width: 250px;
+  min-height: 30px;
+  max-height: 600px;
+}
+
+.hidden {
   display: none;
 }
