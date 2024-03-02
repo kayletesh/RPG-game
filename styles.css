@@ -40,8 +40,10 @@ body {
 }
 
 #controls,
+#secondaryControls,
 #stats {
   border: 2px solid #0a0a23;
+  border-bottom: none !important;
   /* border-radius: 7px; */
   color: #0a0a23;
   padding: 5px;
@@ -75,22 +77,11 @@ button {
   background-image: linear-gradient(#71b1c4, #208030);
   border: 1px solid #70e28d;
   padding: 3px;
+  margin-right: 5px;
   font-family: "EB Garamond", "DotGothic16";
   font-size: 16px;
   font-weight: 700;
   /* letter-spacing: 1px; */
-}
-
-.secondary {
-  /* display: none; */
-  cursor: pointer;
-  color: #0a0a23;
-  background-color: #feac32;
-  background-image: linear-gradient(#fecc4c, #ffac33);
-  border: 3px solid #f6a42a;
-  font-family: "EB Garamond", "DotGothic16";
-  font-size: 16px;
-  font-weight: 700;
 }
 
 #secondaryControls {
