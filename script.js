@@ -1,5 +1,4 @@
 import { items } from "./data/items.js";
-console.table(items);
 let xp = 0;
 
 let health = 100;
@@ -15,6 +14,15 @@ let inventory = [
   //   "greatSword",
   //   "fireBlast",
 ];
+// Axes and amenities shop inventory
+const axesInventory = [
+  items.smallHealthPotion,
+  items.carvingKnife,
+  items.dagger,
+  items.axe,
+  items.seaDagger,
+];
+
 // buttons
 const btnOne = document.querySelector("#buttonOne");
 const btnTwo = document.querySelector("#buttonTwo");
@@ -40,7 +48,7 @@ const monsterName = document.querySelector("#monsterName");
 const monsterHealthText = document.querySelector("#monsterHealth");
 const backpackContainer = document.querySelector("#backpack-container");
 const shopContainer = document.querySelector("#shop-container");
-// const shopbutton = document.createElement("button");
+const itemContainer = document.querySelector("#item-container");
 
 //   // buyItems: {
 //   //   message: "examine content",
@@ -56,12 +64,24 @@ const shopContainer = document.querySelector("#shop-container");
 // buy / sell > opens both
 // backpack > opens backpack
 // if both open > they do nothing, other buttons hide
-
 function handleShop() {
   shopContainer.classList.remove("hidden");
   backpackContainer.classList.remove("hidden");
-  // shopbutton.id = "shop-button";
-  // shopContainer.appendChild(shopbutton);
+  btnOne.classList.add("hidden");
+  axesInventory.forEach((item) => {
+    const shopDiv = document.createElement("div");
+    const shopSpan = document.createElement("span");
+    const shopButton = document.createElement("button");
+    shopDiv.classList.add("items");
+    shopSpan.innerText = item.name;
+    shopButton.innerText = "Buy";
+
+    // shopbutton.id = "shop-button";
+    itemContainer.appendChild(shopDiv);
+    shopDiv.appendChild(shopSpan);
+    shopDiv.appendChild(shopButton);
+  });
+  console.dir(itemContainer);
 }
 
 function handleBackpack() {
@@ -76,6 +96,11 @@ function handleBackpack() {
 function hideTabs() {
   backpackContainer.classList.add("hidden");
   shopContainer.classList.add("hidden");
+  btnOne.classList.remove("hidden");
+
+  while (itemContainer.hasChildNodes()) {
+    itemContainer.removeChild(itemContainer.firstChild);
+  }
 }
 function handleNavigation(locationData) {
   hideTabs();
@@ -206,7 +231,7 @@ const locationData = [
         "Examine the Shop",
         "Examine the Tavern",
         "Examine the Village Gates",
-        "Return",
+        "Close",
       ],
       btnFunctions: [
         function () {
@@ -256,7 +281,7 @@ const locationData = [
         'Examine "Axes and Alms"',
         'Examine "The Last Dram"',
         "Examine Village Gates",
-        "Return",
+        "close",
       ],
       btnFunctions: [
         function () {
@@ -286,13 +311,17 @@ const locationData = [
     /*axes and amenities*/ name: "Axes and Amenities",
     btnContents: [
       "Buy Items",
-      "Sell Items",
+      "Speak to Dwarf",
       "Return to Village",
       "Examine the Store",
     ],
     btnFunctions: [
       buyItems,
-      sellItems,
+      function () {
+        examine(
+          "\"Hahah, It's about time I got a <em><strong>curious</strong></em> adventurer through my doors! Well, come little one. What's on yer mind?\" He asks with a friendly laugh that seems to boom in the small space. <br><br> What do you wish to ask?"
+        );
+      },
       goTown,
       function () {
         examineOptions(locationData[2]);
@@ -304,8 +333,8 @@ const locationData = [
       btnContents: [
         "Examine the Room",
         "examine the dwarf",
-        "speak to the dwarf",
-        "return",
+        "Examine the other rooms",
+        "Close",
       ],
       btnFunctions: [
         function () {
@@ -320,11 +349,11 @@ const locationData = [
         },
         function () {
           examine(
-            "\"Hahah, It's about time I got a <em><strong>curious</strong></em> adventurer through my doors! Well, come little one. What's on yer mind?\" He asks with a friendly laugh that seems to boom in the small space. <br><br> What do you wish to ask?"
+            "You examine the two small doors. The first is just a simple dark oak door. Upon closer inspection you notice a second sign carved into the door itself which reads: \"HOME SWEET HOME\"<br> <br> The other door is slightly cracked open. You can hear the roar of a furnace, as well as the clangs of someone working with the metals within.<br><br> A particulary loud 'CLANG' rings out, followed by a 'THUMP' and a string of curses that could make even a troll blush!!<br><br> \"Dont mind Nettah,\" The elderly dwarf remarks, drawing your attention away as he pushes the door shut with his boot.<br><br>\"She's the best smith I've ever seen! Even if she does curse worse than a sun-dazed goblin on a two-week bender...\" He adds the last bit under his breath, then turns back to his wares."
           );
         },
         function () {
-          goBack(locationData[1]);
+          goBack(locationData[2]);
         },
       ],
       displayText:
@@ -355,7 +384,7 @@ const locationData = [
         "Examine your surroundings",
         "Examine the barkeep",
         "Speak to the Barkeep",
-        "return",
+        "Close",
       ],
       btnFunctions: [
         function () {
@@ -404,7 +433,7 @@ const locationData = [
         "Examine the Plains",
         "Examine the Road Ahead",
         "Examine the EmberBerry patch",
-        "return",
+        "Close",
       ],
       btnFunctions: [
         function () {
