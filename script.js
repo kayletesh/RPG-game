@@ -1,4 +1,7 @@
+import { items } from "./data/items.js";
+console.table(items);
 let xp = 0;
+
 let health = 100;
 let gold = 50;
 let currentWeapon = 0;
@@ -37,6 +40,7 @@ const monsterName = document.querySelector("#monsterName");
 const monsterHealthText = document.querySelector("#monsterHealth");
 const backpackContainer = document.querySelector("#backpack-container");
 const shopContainer = document.querySelector("#shop-container");
+// const shopbutton = document.createElement("button");
 
 //   // buyItems: {
 //   //   message: "examine content",
@@ -49,28 +53,32 @@ const shopContainer = document.querySelector("#shop-container");
 //   },
 // };
 // main buttons
+// buy / sell > opens both
+// backpack > opens backpack
+// if both open > they do nothing, other buttons hide
 
 function handleShop() {
-  if (shopContainer.className === "hidden") {
-    shopContainer.classList.remove("hidden");
-  } else {
-    shopContainer.classList.add("hidden");
-  }
-  console.log("opening shop window");
-  handleBackpack();
-  console.log("Buying Items");
+  shopContainer.classList.remove("hidden");
+  backpackContainer.classList.remove("hidden");
+  // shopbutton.id = "shop-button";
+  // shopContainer.appendChild(shopbutton);
 }
 
 function handleBackpack() {
   if (backpackContainer.className === "hidden") {
     backpackContainer.classList.remove("hidden");
+  } else if (shopContainer.className !== "hidden") {
+    return;
   } else {
     backpackContainer.classList.add("hidden");
   }
-  console.log("opening backpack");
 }
-
+function hideTabs() {
+  backpackContainer.classList.add("hidden");
+  shopContainer.classList.add("hidden");
+}
 function handleNavigation(locationData) {
+  hideTabs();
   secondaryControls.style.display = "none";
   header.innerText = locationData.name;
   btnOne.innerText = locationData.btnContents[0];
@@ -83,8 +91,10 @@ function handleNavigation(locationData) {
   btnFour.onclick = locationData.btnFunctions[3];
   text.innerHTML = locationData.displayText;
 }
+
 // secondary buttons
 function handleSecondaryControls(locationData) {
+  hideTabs();
   secondaryControls.style.display = "block";
   secondaryBtnOne.innerText = locationData.btnContents[0];
   secondaryBtnTwo.innerText = locationData.btnContents[1];
@@ -140,6 +150,7 @@ const goBack = (location) => {
 
 const buyItems = (e) => {
   handleShop();
+  // goShopContainer();
 };
 const sellItems = (e) => {
   handleShop();
