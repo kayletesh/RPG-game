@@ -13,7 +13,7 @@ export const items = {
     buyPrice: 10,
     healing: 10,
     description:
-      "A small health potion. the red liquid bubbles like sparkling water. It smells like raspberries!",
+      "A small health potion. The red liquid bubbles like sparkling water. It smells like raspberries!",
     sellText: "No refunds on remedies of any kind...",
   },
 
@@ -54,6 +54,7 @@ export const items = {
     damage: 15,
     description:
       "A masterfully crafted blade aquired from a wayfarer on his way inland. The blade is dwarven steel, and will not rust no matter how the salt air bites at her. The hilt is wrapped with care in sea-salt treated leather. You can see a strip of blue-green running from the hilt to the tip of the blade. The dagger bares a simple enchantment, one meant to help it's weilder find thier way to the surface should the sea try to claim them for her own.",
+
     buyText:
       "Oh, this? I won it off a wayfarer some years ago... I suppose I could be convinced to part with it. Let's say...50 gold?",
     sellText:

@@ -70,3 +70,36 @@ div needs to appear on click.
 div needs to be hidden on second click
 need an if statement to determine this. 
 check if the display is open, or hidden, and set to opposite.*/
+
+//reset all current objects to this style
+
+// add Name: ___ to each examineOptions to call on name of location in header. (Name: "____",)
+// btnOne.innerText = locationData.buttons[0].text;
+// btnOne.onclick = locationData.buttons[0].function;
+
+// buttons: [
+//     {
+//       text: "Buy Items",
+//       function: function () {
+//         handleShop(axesInventory);
+//       },
+//     },
+//     {
+//       text: "Speak to Dwardf",
+//       function: function () {
+//         handleShop(axesInventory);
+//       },
+//     },
+//     {
+//       text: "Return",
+//       function: function () {
+//         handleShop(axesInventory);
+//       },
+//     },
+//     {
+//       text: "Examine Store",
+//       function: function () {
+//         handleShop(axesInventory);
+//       },
+//     },
+//   ],
