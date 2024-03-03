@@ -1,4 +1,5 @@
 import { items } from "./data/items.js";
+import { NPCs } from "./data/NPCS.js";
 let xp = 0;
 
 let health = 100;
@@ -22,6 +23,7 @@ const axesInventory = [
   items.axe,
   items.seaDagger,
 ];
+// npcs options
 
 // buttons
 const btnOne = document.querySelector("#buttonOne");
@@ -38,7 +40,7 @@ const btnBackpack = document.querySelector("#inventory");
 const divBackpack = document.querySelector("#btnBackpack");
 
 // stats and such
-const header = document.querySelector("h1");
+export const header = document.querySelector("h1");
 const text = document.querySelector("#text");
 const xpText = document.querySelector("#xpText");
 const healthText = document.querySelector("#healthText");
@@ -50,37 +52,32 @@ const backpackContainer = document.querySelector("#backpack-container");
 const shopContainer = document.querySelector("#shop-container");
 const itemContainer = document.querySelector("#item-container");
 
-//   // buyItems: {
-//   //   message: "examine content",
-//   //   btnOptions: ["placeholder"],
-//   //   displayText: `You take a look at what the dwarf has to sell.`,
-//   // },
-
-//   marsh: {
-//     message: "You examine the Marsh.",
-//   },
-// };
-// main buttons
-// buy / sell > opens both
-// backpack > opens backpack
-// if both open > they do nothing, other buttons hide
-function handleShop() {
-  shopContainer.classList.remove("hidden");
-  backpackContainer.classList.remove("hidden");
-  btnOne.classList.add("hidden");
-  axesInventory.forEach((item) => {
+function createShopItems(items) {
+  items.forEach((item) => {
     const shopDiv = document.createElement("div");
     const shopSpan = document.createElement("span");
     const shopButton = document.createElement("button");
+    const itemText = item.description;
     shopDiv.classList.add("items");
     shopSpan.innerText = item.name;
     shopButton.innerText = "Buy";
-
-    // shopbutton.id = "shop-button";
+    console.log(itemText);
+    shopSpan.onclick = () => {
+      text.innerHTML += itemText;
+    };
     itemContainer.appendChild(shopDiv);
     shopDiv.appendChild(shopSpan);
     shopDiv.appendChild(shopButton);
   });
+}
+
+function handleShop(shopInventory) {
+  shopContainer.classList.remove("hidden");
+  backpackContainer.classList.remove("hidden");
+  btnOne.classList.add("hidden");
+  text.innerHTML = "You take a look at what the dwarf has to sell:<br><br>";
+  createShopItems(shopInventory);
+
   console.dir(itemContainer);
 }
 
@@ -93,6 +90,10 @@ function handleBackpack() {
     backpackContainer.classList.add("hidden");
   }
 }
+
+export function npcName(NPCs) {
+  header.innerHTML = NPCs.name;
+}
 function hideTabs() {
   backpackContainer.classList.add("hidden");
   shopContainer.classList.add("hidden");
@@ -104,7 +105,8 @@ function hideTabs() {
 }
 function handleNavigation(locationData) {
   hideTabs();
-  secondaryControls.style.display = "none";
+  // secondaryControls.style.display = "none";
+  console.log(locationData);
   header.innerText = locationData.name;
   btnOne.innerText = locationData.btnContents[0];
   btnTwo.innerText = locationData.btnContents[1];
@@ -118,17 +120,19 @@ function handleNavigation(locationData) {
 }
 
 // secondary buttons
-function handleSecondaryControls(locationData) {
+export function handleSecondaryControls(secondaryOptions) {
+  console.log(secondaryOptions);
   hideTabs();
+  header.innerText = secondaryOptions.name;
   secondaryControls.style.display = "block";
-  secondaryBtnOne.innerText = locationData.btnContents[0];
-  secondaryBtnTwo.innerText = locationData.btnContents[1];
-  secondaryBtnThree.innerText = locationData.btnContents[2];
-  secondaryBtnFour.innerText = locationData.btnContents[3];
-  secondaryBtnOne.onclick = locationData.btnFunctions[0];
-  secondaryBtnTwo.onclick = locationData.btnFunctions[1];
-  secondaryBtnThree.onclick = locationData.btnFunctions[2];
-  secondaryBtnFour.onclick = locationData.btnFunctions[3];
+  secondaryBtnOne.innerText = secondaryOptions.btnContents[0];
+  secondaryBtnTwo.innerText = secondaryOptions.btnContents[1];
+  secondaryBtnThree.innerText = secondaryOptions.btnContents[2];
+  secondaryBtnFour.innerText = secondaryOptions.btnContents[3];
+  secondaryBtnOne.onclick = secondaryOptions.btnFunctions[0];
+  secondaryBtnTwo.onclick = secondaryOptions.btnFunctions[1];
+  secondaryBtnThree.onclick = secondaryOptions.btnFunctions[2];
+  secondaryBtnFour.onclick = secondaryOptions.btnFunctions[3];
 }
 
 // baseSet [Town1, store1, bar1, path1]
@@ -152,10 +156,7 @@ const setForth = (e) => {
   handleNavigation(locationData[4]);
 };
 
-// examine function
-// pass a string parameter into examine for each button
-// set display text to the string parameter
-const examine = (examineText) => {
+export const examine = (examineText) => {
   console.log(examineText);
   text.innerHTML = examineText;
 };
@@ -200,15 +201,10 @@ const goPathTwo = (e) => {
 
 // initialize buttons
 
-const handleBtnContent = (one, two, three) => {
-  btnOne.innerText = one;
-  btnTwo.innerText = two;
-  btnThree.innerText = three;
-};
-
 const locationData = [
   {
     /*onLoad*/ name: "THE VILLAGE OF SONIR",
+
     btnContents: [
       'Enter "Axes and Amenities"',
       'Enter "The Last Dram"',
@@ -309,6 +305,7 @@ const locationData = [
   },
   {
     /*axes and amenities*/ name: "Axes and Amenities",
+
     btnContents: [
       "Buy Items",
       "Speak to Dwarf",
@@ -316,12 +313,17 @@ const locationData = [
       "Examine the Store",
     ],
     btnFunctions: [
-      buyItems,
       function () {
+        handleShop(axesInventory);
+      },
+      function () {
+        handleSecondaryControls(NPCs.dwarf);
         examine(
           "\"Hahah, It's about time I got a <em><strong>curious</strong></em> adventurer through my doors! Well, come little one. What's on yer mind?\" He asks with a friendly laugh that seems to boom in the small space. <br><br> What do you wish to ask?"
         );
+        npcName(NPCs.dwarf);
       },
+      // make this a function like examineOptions
       goTown,
       function () {
         examineOptions(locationData[2]);
@@ -330,6 +332,7 @@ const locationData = [
     displayText:
       '<span>You duck inside to find the interior of the shop is not much larger than a halfling\'s home. There are two small doors leading off to different rooms on either side; both with large signs stating:<br><br> <strong>"NO ENTRY"</strong> <br><br>An elderly dwarven male watches you from the counter. He speaks in a low, but gentle voice: <br>"Hello, young one... Anything catch\'n yer eye?"<br><br> What will you do next?</span>',
     examineOptions: {
+      name: `"Axes & Amenities"`,
       btnContents: [
         "Examine the Room",
         "examine the dwarf",

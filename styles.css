@@ -146,8 +146,9 @@ h2 {
   flex: 1;
   justify-content: space-between;
   font-weight: 700;
+  color: black;
 }
 
-.items {
-  color: black;
+.items span {
+  cursor: pointer;
 }
