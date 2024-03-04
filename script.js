@@ -203,7 +203,7 @@ const goPathTwo = (e) => {
 
 const locationData = [
   {
-    /*onLoad*/ name: "THE VILLAGE OF SONIR",
+    // /*onLoad*/ name: "THE VILLAGE OF SONIR",
 
     btnContents: [
       'Enter "Axes and Amenities"',
