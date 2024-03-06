@@ -1,4 +1,52 @@
-import { examine, handleSecondaryControls } from "../script";
+import {
+  examine,
+  handleSecondaryControls,
+  handleNavigation,
+  npcName,
+  handleShop,
+  axesInventory,
+} from "../script.js";
+
+import { NPCs } from "./NPCS.js";
+
+const goTown = () => {
+  console.log("Returning to the town of Sonir");
+  handleNavigation(locationData.sonirReturn);
+};
+
+const goStore = (e) => {
+  console.log("Entering Store");
+  handleNavigation(locationData.axesAndAmenities);
+};
+
+const goTavern = (e) => {
+  console.log("Entering Tavern");
+  handleNavigation(locationData.theLastDram);
+};
+
+const setForth = (e) => {
+  console.log("Setting out for an Adventure!!");
+  handleNavigation(locationData.roadOne);
+};
+
+const giveDram = (e) => {
+  console.log("You Purchased a Dram");
+};
+
+const goQuestBoard = (e) => {
+  examine(
+    "You walk over to the quest board to find it completely empty.<br><br> \"Sorry lad, A group of adventurers came through a couple days back and took every job on offer!<br> Check back in a few days. I'm sure someone'll have some work for ya.\""
+  );
+  console.log("Checking for quests...");
+};
+
+const goPlains = (e) => {
+  console.log("Going to Plains");
+};
+
+const goPathTwo = (e) => {
+  console.log("Going to Path Two!");
+};
 
 export const locationData = {
   sonirStart: {
@@ -22,7 +70,10 @@ export const locationData = {
       {
         text: "Examine The Village",
         function: function () {
-          examineOptions(locationData[0]);
+          handleSecondaryControls(locationData.sonirStart.secondaryButtons);
+          examine(
+            "<span>The village of Sonir is very small, with fewer than 200 residents within it's walls. From the village square, you can determing that there is only one shop, and one tavern here. Despite this, the little village is known for two things:<br><br> Due to it's quaint location far from any warfronts, many aging warriors find thier way to Sonir to await thier final rest.<br><br> What is the other thing the village is known for, you ask? Why its their <strong>World Famous EmberBerry Ale</strong> of course!!</span>"
+          );
         },
       },
     ],
@@ -60,8 +111,6 @@ export const locationData = {
         },
       },
     ],
-    examineDisplayText:
-      "<span>The village of Sonir is very small, with fewer than 200 residents within it's walls. From the village square, you can determing that there is only one shop, and one tavern here. Despite this, the little village is known for two things:<br><br> Due to it's quaint location far from any warfronts, many aging warriors find thier way to Sonir to await thier final rest.<br><br> What is the other thing the village is known for, you ask? Why its their <strong>World Famous EmberBerry Ale</strong> of course!!</span>",
   },
   sonirReturn: {
     name: "Village of Sonir",
@@ -75,7 +124,10 @@ export const locationData = {
       {
         text: "Examine the Village",
         function: function () {
-          examineOptions(locationData[1]);
+          handleSecondaryControls(locationData.sonirReturn.secondaryButtons);
+          examine(
+            "<span>The village of Sonir is very small, with fewer than 200 residents within it's walls. From the village square, you can determing that there is only one shop, and one tavern here. Despite this, the little village is known for two things:<br><br> Due to it's quaint location far from any warfronts, many aging warriors find thier way to Sonir to await thier final rest.<br><br> What is the other thing the village is known for, you ask? Why its their <strong>World Famous EmberBerry Ale</strong> of course!!</span>"
+          );
         },
       },
     ],
@@ -111,8 +163,6 @@ export const locationData = {
         },
       },
     ],
-    examineDisplayText:
-      "<span>The village of Sonir is very small, with fewer than 200 residents within it's walls. From the village square, you can determing that there is only one shop, and one tavern here. Despite this, the little village is known for two things:<br><br> Due to it's quaint location far from any warfronts, many aging warriors find thier way to Sonir to await thier final rest.<br><br> What is the other thing the village is known for, you ask? Why its their <strong>World Famous EmberBerry Ale</strong> of course!!</span>",
   },
   axesAndAmenities: {
     name: "Axes and Amenities",
@@ -128,7 +178,7 @@ export const locationData = {
       {
         text: "Speak to the Dwarf",
         function: function () {
-          handleSecondaryControls(NPCs.dwarf);
+          handleSecondaryControls(NPCs.dwarf.buttons);
           examine(
             "\"Hahah, It's about time I got a <em><strong>curious</strong></em> adventurer through my doors! Well, come little one. What's on yer mind?\" He asks with a friendly laugh that seems to boom in the small space. <br><br> What do you wish to ask?"
           );
@@ -142,7 +192,12 @@ export const locationData = {
       {
         text: "Examine the Store",
         function: function () {
-          examineOptions(lcationData[2]);
+          handleSecondaryControls(
+            locationData.axesAndAmenities.secondaryButtons
+          );
+          examine(
+            "<span>The dwarf raises an eyebrow as you examine his establishment. He waits patiently while you look around. <br><br> What do you wish to do?</span>"
+          );
         },
       },
     ],
@@ -180,8 +235,6 @@ export const locationData = {
         },
       },
     ],
-    examineDisplayText:
-      "<span>The dwarf raises an eyebrow as you examine his establishment. He waits patiently while you look around. <br><br> What do you wish to do?</span>",
   },
 
   theLastDram: {
@@ -202,7 +255,10 @@ export const locationData = {
       {
         text: "Examine the Tavern",
         function: function () {
-          examineOptions(locationData[3]);
+          handleSecondaryControls(locationData.theLastDram.secondaryButtons);
+          examine(
+            "<span>You examine the tavern.<br><br> The space is much larger than you expected.<br> Several patrons sit at the round tables throughout, and near the back, a hooded figure seems to be asleep in one of the booths adorning the walls.<br><br> What do you wish to do?</span>"
+          );
         },
       },
     ],
@@ -218,6 +274,57 @@ export const locationData = {
       },
       {
         text: "Speak to the Barkeep",
+      },
+    ],
+  },
+  roadOne: {
+    name: "Road One",
+    displayText:
+      "<span>(<strong>Plains Recommended level: 1 )</strong><br>You venture past the village gates to find gentle field of green ahead; the perfect start for our young adventurer! <br>A well kept path cuts through the plains, leading to a crossroads up ahead. So long as you keep to the path, you will be safe, but fortune favors the bold...<br><br> What will you do next?</span>",
+    buttons: [
+      { text: "Explore the Plains", function: goPlains },
+      { text: "Venture Further From Sonir", function: goPathTwo },
+      { text: "Return to Sonir", function: goTown },
+      {
+        text: "Examine the Plains",
+        function: function () {
+          handleSecondaryControls(locationData.roadOne.secondaryButtons);
+          examine(
+            "<span>The plains seem to stretch on for miles ahead of you.<br><br> The lush field of green is tall enough to reach a halfling's chin. Every now and then, you can see the grass rustle, and you're fairly certain that was a tail breaching the grass up ahead.<br><br> What do you wish to do?</span>"
+          );
+        },
+      },
+    ],
+    secondaryButtons: [
+      {
+        text: "Examine the Plains",
+        function: function () {
+          examine(
+            "<span>You examine the Plains. The sea of green is broken periodically by copses of trees. <br><br>To the east you can see an 🏡old farmhouse.<br> To the west, the 🍓berry patch is just visible in the distance.<br><br>Behind you lies the village, and in the distance, you can just make out the scarecrow that marks the crossroads to the south.<br><br> What do you wish to do?</span>"
+          );
+        },
+      },
+      {
+        text: "Examine the Road Ahead",
+        function: function () {
+          examine(
+            "<span>You examine the road ahead.<br><br>You can see what looks like a scarecrow far to the south, and know it to be the crossroads that leads away from the village. <br>The road is well kept, and even now you can see the village guard on their patrol. So long as you stick to the road, you will be safe.<br><br> What do you wish to do?</span>"
+          );
+        },
+      },
+      {
+        text: "Examine the EmberBerry Patch",
+        function: function () {
+          examine(
+            "You examine the berry patch.<br><br> There is not much that you can discern from this distance. The berry patch lies far to the west.<br><br> What do you wish to do?"
+          );
+        },
+      },
+      {
+        text: "Examine the ______",
+        function: function () {
+          examine("You examine the ______");
+        },
       },
     ],
   },
