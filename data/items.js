@@ -60,4 +60,18 @@ export const items = {
     sellText:
       "Yer really going to sell such a fine blade? You know that's enchanted dwarven steel, right? Well, alright then.. I'll give ya 35 gold for it.",
   },
+
+  // Last dram inventory
+
+  EmberBerryAle: {
+    name: "Dram of Ale",
+    buyPrice: 15,
+    healing: 15,
+    description:
+      "\"<br><br>A dram of Sonir's world famous, handcrafted, homebrewed, EmberBerry Ale!<br><br> Travelers as far as the western shores tell tales of this enchanting brew, and even the King himself once paid ten thousand gold pieces just to have a keg of the stuff brought to him in the royal city!",
+    buyText:
+      "\"One dram of EmberBerry Ale coming right up! You're in for a treat lad! Sonir's the only place you'll ever get to taste this stuff!",
+    noMore:
+      "\"You've already got enough lad! Come back when you've done with that one!\"",
+  },
 };

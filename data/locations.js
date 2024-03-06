@@ -5,9 +5,11 @@ import {
   npcName,
   handleShop,
   axesInventory,
+  playerInventory,
 } from "../script.js";
 
 import { NPCs } from "./NPCS.js";
+import { items } from "./items.js";
 
 const goTown = () => {
   console.log("Returning to the town of Sonir");
@@ -27,10 +29,6 @@ const goTavern = (e) => {
 const setForth = (e) => {
   console.log("Setting out for an Adventure!!");
   handleNavigation(locationData.roadOne);
-};
-
-const giveDram = (e) => {
-  console.log("You Purchased a Dram");
 };
 
 const goQuestBoard = (e) => {
@@ -243,7 +241,18 @@ export const locationData = {
       "<span>You enter the small tavern. There are a few other travelers at the tables. A halfling male with what looks to be a long healed burn scar across the right side of his face nods your way in a silent greeting.<br><br> What will you do?</span>",
 
     buttons: [
-      { text: "Buy a Dram of Ale", function: giveDram },
+      {
+        text: "Buy a Dram of Ale",
+        function: function () {
+          if (playerInventory.includes(items.EmberBerryAle)) {
+            text.innerHTML = items.EmberBerryAle.noMore;
+            return;
+          }
+          playerInventory.push(items.EmberBerryAle);
+          text.innerHTML =
+            items.EmberBerryAle.buyText + items.EmberBerryAle.description;
+        },
+      },
       {
         text: "Check the Quest Board",
         function: goQuestBoard,
