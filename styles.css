@@ -84,10 +84,6 @@ button {
   /* letter-spacing: 1px; */
 }
 
-#secondaryControls {
-  display: none;
-}
-
 #stats {
   display: flex;
   justify-content: space-between;
