@@ -8,15 +8,9 @@ let gold = 50;
 let currentWeapon = 0;
 let fighting;
 let monsterHealth;
-let inventory = [
-  "stick",
-  //   "dagger",
-  //   "shortSword",
-  //   "spear",
-  //   "greatSword",
-  //   "fireBlast",
-];
+export const playerInventory = [items.stick];
 // Axes and amenities shop inventory
+
 export const axesInventory = [
   items.smallHealthPotion,
   items.carvingKnife,
@@ -85,6 +79,21 @@ export function handleShop(shopInventory) {
 function handleBackpack() {
   if (backpackContainer.className === "hidden") {
     backpackContainer.classList.remove("hidden");
+    backpackContainer.innerHTML = "";
+    playerInventory.forEach((item) => {
+      console.log(item);
+      const packDiv = document.createElement("div");
+      const packSpan = document.createElement("span");
+      const itemText = item.description;
+      packDiv.classList.add("items");
+      packSpan.innerText = item.name;
+      console.log(itemText);
+      packSpan.onclick = () => {
+        text.innerHTML += itemText;
+      };
+      backpackContainer.appendChild(packDiv);
+      packDiv.appendChild(packSpan);
+    });
   } else if (shopContainer.className !== "hidden") {
     return;
   } else {
