@@ -149,7 +149,9 @@ export const locationData = {
       {
         text: "Examine the fountain",
         function: function () {
-          "You examine the fountain in the village square more closely.<br><br>Crystal clear water pours from five spouts into the basin, providing fresh drinking water for the entire village. The sculptures of the five founders peer down at you.";
+          examine(
+            "You examine the fountain in the village square more closely.<br><br>Crystal clear water pours from five spouts into the basin, providing fresh drinking water for the entire village. The sculptures of the five founders peer down at you."
+          );
         },
       },
       {
