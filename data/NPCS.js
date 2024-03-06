@@ -1,13 +1,13 @@
 import { examine, handleSecondaryControls } from "../script.js";
 
 export const NPCs = {
-  dwarf: {
+  gallahan: {
     name: "Gallahan",
     buttons: [
       {
-        text: "Ask the dwarf his name",
+        text: 'Ask why "The Hammer"',
         function: function () {
-          examine("The dwarf tells you his name.");
+          examine("The dwarf tells you about his nickname.");
         },
       },
       {
@@ -26,7 +26,7 @@ export const NPCs = {
         text: "More Options",
         function: function () {
           //more options
-          handleSecondaryControls(NPCs.dwarf.more.buttons);
+          handleSecondaryControls(NPCs.gallahan.more.buttons);
           examine("Goblin got yer tongue lad? Out with it!");
         },
       },
@@ -63,5 +63,34 @@ export const NPCs = {
         },
       ],
     },
+  },
+  lionel: {
+    name: "Thistlefoot",
+    buttons: [
+      {
+        text: "Ask question one",
+        function: function () {
+          examine("Answer question one.");
+        },
+      },
+      {
+        text: "Ask question two",
+        function: function () {
+          examine("answer question two");
+        },
+      },
+      {
+        text: "ask question three",
+        function: function () {
+          examine("answer question three");
+        },
+      },
+      {
+        text: "ask question four",
+        function: function () {
+          examine("answer question four");
+        },
+      },
+    ],
   },
 };

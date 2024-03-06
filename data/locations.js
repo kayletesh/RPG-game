@@ -176,11 +176,11 @@ export const locationData = {
       {
         text: "Speak to the Dwarf",
         function: function () {
-          handleSecondaryControls(NPCs.dwarf.buttons);
+          handleSecondaryControls(NPCs.gallahan.buttons);
           examine(
-            "\"Hahah, It's about time I got a <em><strong>curious</strong></em> adventurer through my doors! Well, come little one. What's on yer mind?\" He asks with a friendly laugh that seems to boom in the small space. <br><br> What do you wish to ask?"
+            '"Hahah, It\'s about time I got a <em><strong>curious</strong></em> adventurer through my doors!<br> The name\'s Gallahan, but mah friends call me "The Hammer"!<br><br> Come on then, lad. What\'s on yer mind?" He asks with a friendly laugh that seems to boom in the small space. <br><br> What do you wish to ask?'
           );
-          npcName(NPCs.dwarf);
+          npcName(NPCs.gallahan);
         },
       },
       {
@@ -274,15 +274,33 @@ export const locationData = {
     secondaryButtons: [
       {
         text: "Examine the Bar",
+        function: function () {
+          examine("You examine the bar");
+        },
       },
       {
         text: "Examine the other patrons",
+        function: function () {
+          examine("You examine the patrons");
+        },
       },
       {
         text: "Examine the Barkeep",
+        function: function () {
+          examine(
+            'You examine the barkeep more closely. Upon further examination, you realize the little male is standing atop not one, but <em><strong>Three</strong></em> crates! He notices your wide eye\'d expression and growls.<br><br><strong>"My eyes are up here, pal!!"</strong><br> He huffs, before pointing to the menu board. <br>"Either buy sum\'tin or get out!"<br><br>What do you wish to do?'
+          );
+        },
       },
       {
         text: "Speak to the Barkeep",
+        function: function () {
+          handleSecondaryControls(NPCs.lionel.buttons);
+          examine(
+            'The barkeep growls, then lets out an exasperated sigh.<br><br> "OH FOR THE LUV OF... CAN\'T YOU SEE I\'M BUSY HERE??"<br><br> As the halfling speaks, a dwarf male looking not much older than you raps a hand on the bar. "OI, THISTLEFOOT! ANOTHER DRAM DOWN HERE!!"<br><br> The little halfling lets out another frustrated growl while filling a dram, then sends it down to the rowdy dwarf. With the order fulfilled, he lets out another long, suffering sigh, then turns to face you.<br><br> "Fine... fine..." He grumbles.<br> "What? What do you want to know?"'
+          );
+          npcName(NPCs.lionel);
+        },
       },
     ],
   },
