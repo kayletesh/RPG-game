@@ -2,7 +2,6 @@ import {
   examine,
   handleSecondaryControls,
   handleNavigation,
-  npcName,
   handleShop,
   axesInventory,
   playerInventory,
@@ -83,8 +82,6 @@ export const locationData = {
 
     btnExamine: [
       {
-        displayText:
-          "<span>The village of Sonir is very small, with fewer than 200 residents within it's walls. From the village square, you can determing that there is only one shop, and one tavern here. Despite this, the little village is known for two things:<br><br> Due to it's quaint location far from any warfronts, many aging warriors find thier way to Sonir to await thier final rest.<br><br> What is the other thing the village is known for, you ask? Why its their <strong>World Famous EmberBerry Ale</strong> of course!!</span>",
         function: function () {
           handleSecondaryControls(locationData.sonirStart.secondaryButtons);
           examine(
@@ -144,7 +141,7 @@ export const locationData = {
           handleNavigation(locationData.theLastDram);
         },
       },
-      { text: 'Enter "Alchemy Shop"', function: goAlchemy },
+      { text: 'Enter "Tonics and Tomes"', function: goAlchemy },
       {
         text: "Set Forth",
         function: function () {
@@ -155,7 +152,6 @@ export const locationData = {
 
     btnExamine: [
       {
-        displayText: "Examine the Village",
         function: function () {
           handleSecondaryControls(locationData.sonirReturn.secondaryButtons);
           examine(
@@ -217,7 +213,6 @@ export const locationData = {
           examine(
             '"Hahah, It\'s about time I got a <em><strong>curious</strong></em> adventurer through my doors!<br> The name\'s Gallahan, but mah friends call me "The Hammer"!<br><br> Come on then, lad. What\'s on yer mind?" He asks with a friendly laugh that seems to boom in the small space. <br><br> What do you wish to ask?'
           );
-          npcName(NPCs.gallahan);
         },
       },
 
@@ -235,21 +230,16 @@ export const locationData = {
           handleNavigation(locationData.sonirReturn);
         },
       },
-      {
-        text: "Speak to Nettah",
-        function: function () {
-          examine("I've nothin to say to you traveler!!");
-        },
-      },
     ],
 
     btnExamine: [
       {
-        displayText:
-          "<span>The dwarf raises an eyebrow as you examine his establishment. He waits patiently while you look around. <br><br> What do you wish to do?</span>",
         function: function () {
           handleSecondaryControls(
             locationData.axesAndAmenities.secondaryButtons
+          );
+          examine(
+            "<span>The dwarf raises an eyebrow as you examine his establishment. He waits patiently while you look around. <br><br> What do you wish to do?</span>"
           );
         },
       },
@@ -259,7 +249,7 @@ export const locationData = {
         text: "Examine the Room",
         function: function () {
           examine(
-            "You examine the interior of the shop more closely. there are several displays along the walls, and in the center of the room.<br><br> Some are laiden with books and Tomes. Some are covered in plants of all kinds(Some of which seem to move when you're not watching them.) Some are filled with delicious looking fruits and root vegetables. There's a rack behind the counter where two ducks, a very plump pheasant, and some creature you can't quite identiy hang, waiting for purchase.<br><br> There are two racks near the counter. One is covered in axes, swords, daggers, and you even spot a worn spear! The other displays three full sets of leather armour, one seemingly crafted to fit a halfling, one a bit larger, fit for a dwarf, and the other tall and lean, with an elf's signet embossed at the cuffs.<br><br> What do you wish to do?"
+            "You examine the interior of the shop more closely.<br><br> There are several displays along the walls, and in the center of the room.<br><br> Some are filled to the brim with hand crafted toys and games for the village's youngest denizens. Some are filled with delicious looking fruits and root vegetables. <br>There's a rack behind the counter where two ducks, a very plump pheasant, and some creature you can't quite identiy hang, waiting for purchase.<br><br> There are two racks near the counter. One is covered in axes, swords, daggers, and you even spot a worn spear! <br>The other displays three full sets of leather armour; one seemingly crafted to fit a halfling, one a bit larger, and quite a bit wider, fit for a dwarf. The third is tall and lean, with an elf's signet embossed at the cuffs.<br><br> What do you wish to do?"
           );
         },
       },
@@ -267,7 +257,7 @@ export const locationData = {
         text: "Examine the Dwarf",
         function: function () {
           examine(
-            "You examine the dwarf. The first thing you notice is that he is old. <em><strong>Really</strong></em> old. <br><br>His once red hair is now mostly grey, but a few strands of fire red still fight through tangled mane. His beard grows nearly to the ground, showing this dwarf has never fallen in battle, and tied in multiple grey-and-red braids.<br><br>There are three long, jagged scars running from his left temple, down to his chin, cutting across his left eye, nose, and lip.<br>The eye in question, has been replaced by a stunning golden device that seems to track your movements as if it were truly watching you.<br><br>The dwarf wears a simple green tunic, revealing many similarly grisly scars along his arms and legs. It is clear he has seen many battles in his earlier days.<br><br> What do you wish to do?"
+            "You examine the dwarf. The first thing you notice is that he is old. <em><strong>Really</strong></em> old. <br><br>His once red hair is now mostly grey, but a few strands of fire still fight through tangled mane. His beard grows nearly to the ground, showing this dwarf has never fallen in battle, and is tied in multiple grey-and-red braids.<br><br>There are three long, jagged scars running from his left temple, down to his chin, cutting across his left eye, nose, and lip.<br>The eye in question, has been replaced by a stunning golden device that seems to track your movements as if it were truly watching you.<br><br>The dwarf wears a simple green tunic, revealing many similarly grisly scars along his arms and legs. It is clear he has seen many battles in his earlier days.<br><br> What do you wish to do?"
           );
         },
       },
@@ -313,12 +303,9 @@ export const locationData = {
         function: goQuestBoard,
       },
       {
-        text: "Examine the Tavern",
+        text: "Sit Down at a Table",
         function: function () {
-          handleSecondaryControls(locationData.theLastDram.secondaryButtons);
-          examine(
-            "<span>You examine the tavern.<br><br> The space is much larger than you expected.<br> Several patrons sit at the round tables throughout, and near the back, a hooded figure seems to be asleep in one of the booths adorning the walls.<br><br> What do you wish to do?</span>"
-          );
+          examine("<span>You take a seat in one of the empty booths </span>");
         },
       },
       {
@@ -326,6 +313,17 @@ export const locationData = {
         function: goTown,
       },
     ],
+    btnExamine: [
+      {
+        function: function () {
+          handleSecondaryControls(locationData.theLastDram.secondaryButtons);
+          examine(
+            "<span>You examine the tavern.<br><br> The space is much larger than you expected.<br> Several patrons sit at the round tables throughout, and near the back, a hooded figure seems to be asleep in one of the booths adorning the walls.<br><br> What do you wish to do?</span>"
+          );
+        },
+      },
+    ],
+
     secondaryButtons: [
       {
         text: "Examine the Bar",
@@ -354,7 +352,6 @@ export const locationData = {
           examine(
             'The barkeep growls, then lets out an exasperated sigh.<br><br> "OH FOR THE LUV OF... CAN\'T YOU SEE I\'M BUSY HERE??"<br><br> As the halfling speaks, a dwarf male looking not much older than you raps a hand on the bar. "OI, THISTLEFOOT! ANOTHER DRAM DOWN HERE!!"<br><br> The little halfling lets out another frustrated growl while filling a dram, then sends it down to the rowdy dwarf. With the order fulfilled, he lets out another long, suffering sigh, then turns to face you.<br><br> "Fine... fine..." He grumbles.<br> "What? What do you want to know?"'
           );
-          npcName(NPCs.lionel);
         },
       },
     ],
@@ -366,9 +363,16 @@ export const locationData = {
     buttons: [
       { text: "Explore the Plains", function: goPlains },
       { text: "Venture Further From Sonir", function: goPathTwo },
-      { text: "Return to Sonir", function: goTown },
       {
-        text: "Examine the Plains",
+        text: "Speak to the Guards",
+        function: function () {
+          console.log("speaking with guards");
+        },
+      },
+      { text: "Return to Sonir", function: goTown },
+    ],
+    btnExamine: [
+      {
         function: function () {
           handleSecondaryControls(locationData.roadOne.secondaryButtons);
           examine(

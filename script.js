@@ -82,7 +82,7 @@ export function handleShop(shopInventory) {
 function handleBackpack() {
   if (backpackContainer.className === "hidden") {
     backpackContainer.classList.remove("hidden");
-    // backpackContainer.innerHTML = "";
+    backpack.innerHTML = "";
     playerInventory.forEach((item) => {
       console.log(item);
       const packDiv = document.createElement("div");
@@ -94,7 +94,7 @@ function handleBackpack() {
       packSpan.onclick = () => {
         text.innerHTML += itemText;
       };
-      backpackContainer.appendChild(packDiv);
+      backpack.appendChild(packDiv);
       packDiv.appendChild(packSpan);
     });
   } else if (shopContainer.className !== "hidden") {
@@ -112,9 +112,6 @@ const fifthOption = () => {
   }
 };
 
-export function npcName(NPCs) {
-  header.innerHTML = NPCs.name;
-}
 function hideTabs() {
   backpackContainer.classList.add("hidden");
   shopContainer.classList.add("hidden");
@@ -141,12 +138,6 @@ export const handleNavigation = (locationData) => {
   btnExamine.onclick = locationData.btnExamine[0].function;
 };
 
-// export const handleExamine = (examineText) => {
-//   btnExamine.onclick = examineText.btnExamine[0].function;
-//   hideTabs();
-//   secondaryContainer.classList.add("hidden");
-//   text.innerHTML = examineText.btnExamine[0].displayText;
-// };
 // secondary buttons
 export const handleSecondaryControls = (secondaryOptions) => {
   console.log(secondaryOptions);
@@ -168,58 +159,6 @@ export const examine = (examineText) => {
   text.innerHTML = examineText;
 };
 
-// const giveDram = (e) => {
-//   console.log("You Purchased a Dram");
-// };
-
-// const goQuestBoard = (e) => {
-//   console.log("Checking for quests...");
-// };
-
-// const goPlains = (e) => {
-//   console.log("Going to Plains");
-// };
-
-// const goPathTwo = (e) => {
-//   console.log("Going to Path Two!");
-// };
-
-// initialize buttons
-
-// const locationsOld = [
-//   {
-//     // /*onLoad*/ name: "THE VILLAGE OF SONIR",
-
-//     btnContents: [
-//       'Enter "Axes and Amenities"',
-//       'Enter "The Last Dram"',
-//       "Set Forth",
-//       "Examine The Village",
-//     ],
-//     btnFunctions: [
-//       goStore,
-//       goTavern,
-//       setForth,
-//       function () {
-//         examineOptions(locationData[0]);
-//       },
-//     ],
-//     displayText:
-//       "<span><strong>Welcome</strong> young adventurer, to the village of Sonir. Strange creatures have appeared beyond the village gates. <strong>The King of Covehn has called for aid!</strong> All those young, and capable of travel, are to make for the kingdom at once! <br><br><strong>The Bone King</strong> has risen once more! <br> You must train hard, and venture far from home to help save the kingdom from this terrible threat.<br><br> What do you wish to do?</span>",
-//     examineOptions: {
-//       name: "THE VILLAGE OF SONIR",
-//       btnContents: [
-//         "Examine the Shop",
-//         "Examine the Tavern",
-//         "Examine the Village Gates",
-//         "Close",
-//       ],
-//       btnFunctions: [
-//         function () {
-//           examine(
-//             '<span>You examine the little shop.<br><br> It\'s really nothing more than a large, round, wooden door build into the side of a hill. An equally round, lovingly painted, red sign is displayed with pride above the little door:<br><br> <strong>"AXES AND AMENITIES:<br>ONE STOP SHOP FOR ALL YOUR<br> ADVENTURING SUPPLIES!"</strong> <br><br> What do you wish to do?</span>'
-//           );
-//         },
 //         function () {
 //           examine(
 //             "<span>You examine the tavern.<br><br> The village's tavern sits to your right. It's a simple structure of carved stone and wood, but your eyes quickly fall upon a well kept sign standing by the door. <br><br><strong>\"THE LAST DRAM <br>BEST ALE SOUTH OF THE VEREL FOREST!<br>JUST ONE SIP, AND ALL YOUR <br>SORROWS WILL FADE AWAY!</strong>\"<br><br> What do you wish to do?</span>"
