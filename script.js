@@ -25,6 +25,7 @@ const btnOne = document.querySelector("#buttonOne");
 const btnTwo = document.querySelector("#buttonTwo");
 const btnThree = document.querySelector("#buttonThree");
 const btnFour = document.querySelector("#buttonFour");
+const btnFive = document.querySelector("#buttonFive");
 // Secondary buttons
 const secondaryBtnOne = document.querySelector("#secondaryOne");
 const secondaryBtnTwo = document.querySelector("#secondaryTwo");
@@ -32,7 +33,9 @@ const secondaryBtnThree = document.querySelector("#secondaryThree");
 const secondaryBtnFour = document.querySelector("#secondaryFour");
 const secondaryControls = document.querySelector("#secondaryControls");
 const btnBackpack = document.querySelector("#inventory");
+const btnExamine = document.querySelector("#btnExamine");
 const divBackpack = document.querySelector("#btnBackpack");
+const secondaryContainer = document.querySelector("#secondaryContainer");
 
 // stats and such
 export const header = document.querySelector("h1");
@@ -79,7 +82,7 @@ export function handleShop(shopInventory) {
 function handleBackpack() {
   if (backpackContainer.className === "hidden") {
     backpackContainer.classList.remove("hidden");
-    backpackContainer.innerHTML = "";
+    // backpackContainer.innerHTML = "";
     playerInventory.forEach((item) => {
       console.log(item);
       const packDiv = document.createElement("div");
@@ -101,6 +104,14 @@ function handleBackpack() {
   }
 }
 
+const fifthOption = () => {
+  if (btnOne.className === "hidden") {
+    btnFive.classList.remove("hidden");
+  } else {
+    btnFive.classList.add("hidden");
+  }
+};
+
 export function npcName(NPCs) {
   header.innerHTML = NPCs.name;
 }
@@ -115,7 +126,7 @@ function hideTabs() {
 }
 export const handleNavigation = (locationData) => {
   hideTabs();
-  secondaryControls.classList.add("hidden");
+  secondaryContainer.classList.add("hidden");
   console.log(locationData);
   header.innerText = locationData.name;
   btnOne.innerText = locationData.buttons[0].text;
@@ -127,13 +138,20 @@ export const handleNavigation = (locationData) => {
   btnThree.onclick = locationData.buttons[2].function;
   btnFour.onclick = locationData.buttons[3].function;
   text.innerHTML = locationData.displayText;
+  btnExamine.onclick = locationData.btnExamine[0].function;
 };
 
+// export const handleExamine = (examineText) => {
+//   btnExamine.onclick = examineText.btnExamine[0].function;
+//   hideTabs();
+//   secondaryContainer.classList.add("hidden");
+//   text.innerHTML = examineText.btnExamine[0].displayText;
+// };
 // secondary buttons
 export const handleSecondaryControls = (secondaryOptions) => {
   console.log(secondaryOptions);
   hideTabs();
-  secondaryControls.classList.remove("hidden");
+  secondaryContainer.classList.remove("hidden");
   secondaryBtnOne.innerText = secondaryOptions[0].text;
   secondaryBtnTwo.innerText = secondaryOptions[1].text;
   secondaryBtnThree.innerText = secondaryOptions[2].text;
@@ -146,23 +164,8 @@ export const handleSecondaryControls = (secondaryOptions) => {
 
 export const examine = (examineText) => {
   console.log(examineText);
+  fifthOption();
   text.innerHTML = examineText;
-};
-// examine code ONLY
-
-const goBack = (location) => {
-  handleNavigation(location);
-};
-
-// set1 [buyItems, sellItems, giveDram, questBoard, goPlains, goPath2]
-
-const buyItems = (e) => {
-  handleShop();
-  // goShopContainer();
-};
-const sellItems = (e) => {
-  handleShop();
-  console.log("Selling Items");
 };
 
 // const giveDram = (e) => {

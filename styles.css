@@ -21,9 +21,12 @@ body {
 }
 
 #text {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
   background-color: #0a0a23;
   color: #ccf2fc;
   padding: 10px;
+  min-height: 400px;
 }
 
 #game {
@@ -31,8 +34,8 @@ body {
   margin-top: 30px;
   display: flex;
   flex-direction: column;
-  max-width: 700px;
-  height: 600px;
+  width: 750px;
+  height: 700px;
   background-color: #1a5c4d;
   color: #ccf2fc;
   margin: 30px, auto, 0px, auto;
@@ -47,6 +50,7 @@ body {
   /* border-radius: 7px; */
   color: #0a0a23;
   padding: 5px;
+  min-height: 42px;
 }
 
 h1 {
@@ -95,7 +99,6 @@ button {
 #shop-container {
   margin: 30px 3px 0px 3px;
 
-  /* border: 2px solid #422a05; */
   border: 2px solid var(--gold);
   /* background: #475026; */
   background: #f6ff784d;
@@ -147,4 +150,14 @@ h2 {
 
 .items span {
   cursor: pointer;
+}
+
+#btnBackpack {
+  display: flex;
+}
+#btnExamine,
+#inventory {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
