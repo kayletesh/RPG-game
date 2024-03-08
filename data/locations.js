@@ -4,6 +4,7 @@ import {
   handleNavigation,
   handleShop,
   axesInventory,
+  sophiaInventory,
   playerInventory,
 } from "../script.js";
 
@@ -13,21 +14,6 @@ import { items } from "./items.js";
 const goTown = () => {
   console.log("Returning to the town of Sonir");
   handleNavigation(locationData.sonirReturn);
-};
-
-const goStore = (e) => {
-  console.log("Entering Store");
-  handleNavigation(locationData.axesAndAmenities);
-};
-
-const goTavern = (e) => {
-  console.log("Entering Tavern");
-  handleNavigation(locationData.theLastDram);
-};
-
-const setForth = (e) => {
-  console.log("Setting out for an Adventure!!");
-  handleNavigation(locationData.roadOne);
 };
 
 const goQuestBoard = (e) => {
@@ -43,10 +29,6 @@ const goPlains = (e) => {
 
 const goPathTwo = (e) => {
   console.log("Going to Path Two!");
-};
-
-const goAlchemy = (e) => {
-  console.log("going to alc shop");
 };
 
 export const locationData = {
@@ -70,7 +52,9 @@ export const locationData = {
       },
       {
         text: 'Enter "Tonics and Tomes"',
-        function: goAlchemy,
+        function: function () {
+          handleNavigation(locationData.tonicsAndTomes);
+        },
       },
       {
         text: "Set Forth",
@@ -141,7 +125,12 @@ export const locationData = {
           handleNavigation(locationData.theLastDram);
         },
       },
-      { text: 'Enter "Tonics and Tomes"', function: goAlchemy },
+      {
+        text: 'Enter "Tonics and Tomes"',
+        function: function () {
+          handleNavigation(locationData.tonicsAndTomes);
+        },
+      },
       {
         text: "Set Forth",
         function: function () {
@@ -204,6 +193,7 @@ export const locationData = {
         text: "Check the store's stock",
         function: function () {
           handleShop(axesInventory);
+          examine("You take a look at what the dwarf has to sell:<br><br>");
         },
       },
       {
@@ -352,6 +342,77 @@ export const locationData = {
           examine(
             'The barkeep growls, then lets out an exasperated sigh.<br><br> "OH FOR THE LUV OF... CAN\'T YOU SEE I\'M BUSY HERE??"<br><br> As the halfling speaks, a dwarf male looking not much older than you raps a hand on the bar. "OI, THISTLEFOOT! ANOTHER DRAM DOWN HERE!!"<br><br> The little halfling lets out another frustrated growl while filling a dram, then sends it down to the rowdy dwarf. With the order fulfilled, he lets out another long, suffering sigh, then turns to face you.<br><br> "Fine... fine..." He grumbles.<br> "What? What do you want to know?"'
           );
+        },
+      },
+    ],
+  },
+  tonicsAndTomes: {
+    name: "Tonics and Tomes",
+    displayText:
+      '<span> You enter Tonics and Tomes.<br><br> Inside, the little shop could easily be mistaken for a library. Little piles, stacks, and shelves of books, tomes, and scrolls adorn every nook and cranny. <br>Along the back wall of the shop there is a low counter. Several potions and tonics are arranged neatly along its surface. <br><br>You hear a sound similar to a purr as a little orange head pops up from behind the counter.<br><br> "A customer!" The creature exclaims in a broken, gravelly mew. You immediately recognize the little creature as an owlcat. The little winged, and beaked cat stands nearly as tall as a halfling on her hind legs. She wears a deep indigo robe, as well as a wizard\'s hat dangled over one of her tabby ears. Despite her age, the little owlcat\'s eyes are bright as she shuffles over to greet you.<br><br> "Are you looking for a healing potion perhaps? Or maybe to dabble in the arcane arts?"<br><br> What do you wish to do?',
+
+    buttons: [
+      {
+        text: "Check the store's stock",
+        function: function () {
+          handleShop(sophiaInventory);
+          examine("You take a look at what Sophia has to sell:");
+        },
+      },
+      {
+        text: "Speak to the Owlcat",
+        function: function () {
+          handleSecondaryControls(NPCs.sophia.buttons);
+          examine(
+            '"What would you like to know, young one? A bit about tomes? How about scrolls? Perhaps you\'ve taken an interest in herbology?"'
+          );
+        },
+      },
+      {
+        text: "something here",
+        function: function () {
+          examine("Dont forget to add flavor text here!!!");
+        },
+      },
+      {
+        text: "Return to the Square",
+        function: function () {
+          handleNavigation(locationData.sonirReturn);
+        },
+      },
+    ],
+
+    btnExamine: [
+      {
+        function: function () {
+          handleSecondaryControls(locationData.tonicsAndTomes.secondaryButtons);
+          examine("<span>Sophia watches as you examine her shop.");
+        },
+      },
+    ],
+    secondaryButtons: [
+      {
+        text: "Examine option one",
+        function: function () {
+          examine("You examine option one");
+        },
+      },
+      {
+        text: "examine option two",
+        function: function () {
+          examine("You examine option two");
+        },
+      },
+      {
+        text: "Examine option three",
+        function: function () {
+          examine("you examine option three");
+        },
+      },
+      {
+        text: "examine option four",
+        function: function () {
+          examine("You examine option four");
         },
       },
     ],

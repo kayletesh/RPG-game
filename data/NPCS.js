@@ -93,4 +93,33 @@ export const NPCs = {
       },
     ],
   },
+  sophia: {
+    name: "Sophia Owlsbrook",
+    buttons: [
+      {
+        text: "Ask question one",
+        function: function () {
+          examine("Answer question one");
+        },
+      },
+      {
+        text: "Ask question two",
+        function: function () {
+          examine("Answer question two");
+        },
+      },
+      {
+        text: "Ask question three",
+        function: function () {
+          examine("Answer question three");
+        },
+      },
+      {
+        text: "Ask question four",
+        function: function () {
+          examine("Answer question four");
+        },
+      },
+    ],
+  },
 };

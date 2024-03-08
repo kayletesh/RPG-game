@@ -5,6 +5,7 @@ let xp = 0;
 
 let health = 100;
 let gold = 50;
+let mp = 50;
 let currentWeapon = 0;
 let fighting;
 let monsterHealth;
@@ -17,6 +18,12 @@ export const axesInventory = [
   items.dagger,
   items.axe,
   items.seaDagger,
+];
+
+export const sophiaInventory = [
+  items.healthTonic,
+  items.scrollOfEmbers,
+  items.manaTonic,
 ];
 // npcs options
 
@@ -73,7 +80,7 @@ export function handleShop(shopInventory) {
   shopContainer.classList.remove("hidden");
   backpackContainer.classList.remove("hidden");
   btnOne.classList.add("hidden");
-  text.innerHTML = "You take a look at what the dwarf has to sell:<br><br>";
+  // text.innerHTML = "You take a look at what the dwarf has to sell:<br><br>";
   createShopItems(shopInventory);
 
   console.dir(itemContainer);
@@ -103,14 +110,6 @@ function handleBackpack() {
     backpackContainer.classList.add("hidden");
   }
 }
-
-const fifthOption = () => {
-  if (btnOne.className === "hidden") {
-    btnFive.classList.remove("hidden");
-  } else {
-    btnFive.classList.add("hidden");
-  }
-};
 
 function hideTabs() {
   backpackContainer.classList.add("hidden");
@@ -155,7 +154,6 @@ export const handleSecondaryControls = (secondaryOptions) => {
 
 export const examine = (examineText) => {
   console.log(examineText);
-  fifthOption();
   text.innerHTML = examineText;
 };
 

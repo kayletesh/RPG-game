@@ -56,9 +56,9 @@ export const items = {
       "A masterfully crafted blade aquired from a wayfarer on his way inland. The blade is dwarven steel, and will not rust no matter how the salt air bites at her. The hilt is wrapped with care in sea-salt treated leather. You can see a strip of blue-green running from the hilt to the tip of the blade. The dagger bares a simple enchantment, one meant to help it's weilder find thier way to the surface should the sea try to claim them for her own.",
 
     buyText:
-      "Oh, this? I won it off a wayfarer some years ago... I suppose I could be convinced to part with it. Let's say...50 gold?",
+      '"Oh, this? I won it off a wayfarer some years ago... I suppose I could be convinced to part with it. Let\'s say...50 gold?"',
     sellText:
-      "Yer really going to sell such a fine blade? You know that's enchanted dwarven steel, right? Well, alright then.. I'll give ya 35 gold for it.",
+      "\"Yer really going to sell such a fine blade? You know that's enchanted dwarven steel, right? Well, alright then.. I'll give ya 35 gold for it.\"",
   },
 
   // Last dram inventory
@@ -73,5 +73,29 @@ export const items = {
       "\"One dram of EmberBerry Ale coming right up! You're in for a treat lad! Sonir's the only place you'll ever get to taste this stuff!",
     noMore:
       "\"You've already got enough lad! Come back when you've done with that one!\"",
+  },
+  // Tonics and Tomes Inventory
+  healthTonic: {
+    name: "Sophia's Health Tonic",
+    buyPrice: 15,
+    healing: 20,
+    description:
+      "Sophia's handcrafted health tonics. The little Owlcat spent nearly a century perfecting this brew. It smells of straberries and mint!",
+  },
+  manaTonic: {
+    name: "Small Mana Tonic",
+    buyPrice: 30,
+    manaRestore: 20,
+    description:
+      "A small tonic used to replenish one's mana: The source of all magic. They're expensive, but worth it for any caster!",
+  },
+  scrollOfEmbers: {
+    name: "Scroll of burning embers",
+    buyPrice: 50,
+    magicType: "fire",
+    magicDamage: 20,
+    manaCost: 10,
+    description:
+      'This scroll will allow the user a one time cast of "Ember Blast", which will send out sparks of embers, inflicting burn damage on an enemy.',
   },
 };
