@@ -68,7 +68,8 @@ function createShopItems(items) {
     shopButton.innerText = "Buy";
     console.log(itemText);
     shopSpan.onclick = () => {
-      text.innerHTML += itemText;
+      text.innerHTML =
+        "You examine the stock more closely: <br><br>" + itemText;
     };
     itemContainer.appendChild(shopDiv);
     shopDiv.appendChild(shopSpan);
@@ -78,7 +79,8 @@ function createShopItems(items) {
 
 export function handleShop(shopInventory) {
   shopContainer.classList.remove("hidden");
-  backpackContainer.classList.remove("hidden");
+  handleBackpack();
+
   btnOne.classList.add("hidden");
   // text.innerHTML = "You take a look at what the dwarf has to sell:<br><br>";
   createShopItems(shopInventory);
