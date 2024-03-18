@@ -3,27 +3,27 @@
 Set up buttons for venturing further from the plains ONE LEVEL ONLY
 set up examines for all "Phase one."
 
-Phase three will focus on chatBox and Header. 
+Phase three will focus on chatBox and Header.
 
 
-things to program in 
+things to program in
 
-random town texts, speach, 
+random town texts, speach,
 
 
 // places to include:
 
 
 // town
-/* 
+/*
 from start:
 store
 tavern
 path
 
-pathOne - 
+pathOne -
 plains
-town, 
+town,
 pathTwo
 
 plains
@@ -42,7 +42,7 @@ grasslands
 beach
 forest
 
-from Shore: 
+from Shore:
 Marshes
 TidePools
 Cove
@@ -66,9 +66,9 @@ The Castle*/
 // backpack pseudocode
 // copy all backpack code for buying window.
 /*Div needs to be hidden on load
-div needs to appear on click. 
+div needs to appear on click.
 div needs to be hidden on second click
-need an if statement to determine this. 
+need an if statement to determine this.
 check if the display is open, or hidden, and set to opposite.*/
 
 //reset all current objects to this style
@@ -103,3 +103,10 @@ check if the display is open, or hidden, and set to opposite.*/
 //       },
 //     },
 //   ],
+
+
+// how to encounter:
+/*on explore, start the encounter 
+each monster needs a percentage. 
+1/52, assign a number to 
+*/
