@@ -20,8 +20,7 @@ export const MONSTERS = {
         }],
         level: 1,
         health: 10,
-        conditionOne: "no condition",
-
+        quest: "none",
     },
     crow: {
         name: "Crow",
@@ -37,6 +36,7 @@ export const MONSTERS = {
         }],
         level: 1,
         health: 15,
+
     },
     barrel_rat: {
         name: "Barrel Rat",
