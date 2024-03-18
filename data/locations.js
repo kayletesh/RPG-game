@@ -16,6 +16,10 @@ const goTown = () => {
   handleNavigation(locationData.sonirReturn);
 };
 
+const goEncounter = (e) => {
+  console.log("Starting encounter")
+}
+
 const goQuestBoard = (e) => {
   examine(
     "You walk over to the quest board to find it completely empty.<br><br> \"Sorry lad, A group of adventurers came through a couple days back and took every job on offer!<br> Check back in a few days. I'm sure someone'll have some work for ya.\""
@@ -269,7 +273,6 @@ export const locationData = {
       },
     ],
   },
-
   theLastDram: {
     name: "The Last Dram",
     displayText:
@@ -420,9 +423,9 @@ export const locationData = {
   roadOne: {
     name: "Road One",
     displayText:
-      "<span>(<strong>Plains Recommended level: 1 )</strong><br>You venture past the village gates to find gentle field of green ahead; the perfect start for our young adventurer! <br>A well kept path cuts through the plains, leading to a crossroads up ahead. So long as you keep to the path, you will be safe, but fortune favors the bold...<br><br> What will you do next?</span>",
+      "<span>You venture past the village gates to find gentle field of green ahead; the perfect start for our young adventurer! <br>A well kept path cuts through the plains, leading to a crossroads up ahead. So long as you keep to the path, you will be safe, but fortune favors the bold...<br><br> What will you do next?</span>",
     buttons: [
-      { text: "Explore the Plains", function: goPlains },
+      { text: "Explore the Plains", function: function () { handleNavigation(locationData.plains) } },
       { text: "Venture Further From Sonir", function: goPathTwo },
       {
         text: "Speak to the Guards",
@@ -475,4 +478,107 @@ export const locationData = {
       },
     ],
   },
+  plains: {
+    name: "The Plains",
+    displayText: "<span>(<strong>Plains Recommended level: 1 )</strong><br></br> You take your first steps out into the grassy plains of Sonir. <br><br> What do you wish to do?</span>",
+    buttons: [
+      { text: "Head into the Fields", function: function () { handleNavigation(locationData.fields) } },
+      { text: "Head towards the Farmhouse", function: function () { console.log("exploring farmhouse") } },
+      { text: "Head twoards the BerryPatch", function: function () { console.log("exploring berrypatch") } },
+      { text: "Return to The First Road", function: function () { handleNavigation(locationData.roadOne) } },
+    ],
+    btnExamine: [
+      {
+        function: function () {
+          handleSecondaryControls(locationData.plains.secondaryButtons);
+          examine(
+            "You examine the plains"
+          )
+        }
+      }
+    ],
+    secondaryButtons: [
+      {
+        text: "examine one",
+        function: function () {
+          examine("You examine option one")
+        }
+      }, {
+        text: "examine two",
+        function: function () {
+          examine("you examine option two")
+        }
+      }, {
+        text: "examine three",
+        function: function () {
+          examine("You examine option three")
+
+        }
+      }, {
+        text: "examine four",
+        function: function () {
+          examine("You examine option four")
+        }
+      }
+    ]
+  },
+  fields: {
+    name: "The Fields",
+    displayText: "You are in the fields. <br><br> What do you wish to do?",
+    buttons: [
+      {
+        text: "Explore the fields",
+        function: goEncounter,
+      },
+      {
+        text: "return to the First Road",
+        function: function () {
+          handleNavigation(locationData.roadOne)
+        }
+      },
+      {
+        text: "return to village",
+        function: function () { handleNavigation(locationData.sonirReturn) }
+      },
+      {
+        text: "return to village",
+        function: function () { handleNavigation(locationData.sonirReturn) }
+      },],
+    btnExamine: [
+      {
+        function: function () {
+          handleSecondaryControls(locationData.plains.secondaryButtons);
+          examine(
+            "You examine the plains"
+          )
+        }
+      }
+    ],
+    secondaryButtons: [
+      {
+        text: "examine one",
+        function: function () {
+          examine("You examine option one")
+        }
+      }, {
+        text: "examine two",
+        function: function () {
+          examine("you examine option two")
+        }
+      }, {
+        text: "examine three",
+        function: function () {
+          examine("You examine option three")
+
+        }
+      }, {
+        text: "examine four",
+        function: function () {
+          examine("You examine option four")
+        }
+      }
+    ]
+
+
+  }
 };

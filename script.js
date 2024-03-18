@@ -1,7 +1,7 @@
 import { items } from "./data/items.js";
 import { NPCs } from "./data/NPCS.js";
 import { locationData } from "./data/locations.js";
-import { monsters } from "./data/monsters.js";
+
 let xp = 0;
 
 let health = 100;
